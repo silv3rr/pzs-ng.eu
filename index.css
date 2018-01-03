@@ -9,7 +9,7 @@ a:link, a:active, a:visited, a:hover {
 	text-decoration: none;
 	color: #00FF00;
 }
- 
+
 .keyword {
 	color: #FF0;
 }
@@ -22,20 +22,27 @@ a:link, a:active, a:visited, a:hover {
 	margin-left: 30px;
 }
  
- 
-/*h1#file_header {
+/* h1#file_header {
 	font-size: 1em;
 	margin-bottom: 0px;
-}*/
+} */
  
 .file_links {
-	/*margin-left: 20px;*/
+	/* margin-left: 20px; */
 }
 .file_links h2 {
 	font-size: 1em;
 	margin-bottom: 0.2em;
 }
  
+.file_links a {
+        color: #BBBBBB;
+}
+
+.file_links_text {
+	margin-left: 20px;
+}
+
 iframe#google_ads_frame1 {
 	height: 17px;
 }
