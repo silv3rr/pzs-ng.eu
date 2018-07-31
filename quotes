@@ -13,6 +13,8 @@ MUSHi was kicked from #pzs-ng by daxxar [YOU MESSED WITH MY FAG FOR THE LAST TIM
 <tascagao> I nee some help with IMDB, where I can find it ?\n<mng> imdb.com
 <tr1t1um> d3x0c: go do a reddit AMA, "I am e-famous person who made a gl theme, AMA" rofl
 <@Sked|> The update date isn't correct though :p\n<hy> np. i blame daxxars template mirror... oh.. wait. ;P
+<seki> Sked| dpkg -i libc6-i386_2.19-18+deb8u10_amd64.deb fixed the issue :)\n<Sked|> Sigh
 <skar> whats the best way to delete an entire dir with subdirs and have the subdirs not appear in !search after deleted ?\n<thorin> rtfm\n<Ra0uL> site rtfm\n<skar> is rtfm a script i gotta install ?
+<ikaroz> if that's a known issue, why isn't it fixed?\n<red-6> you're a known issue
 <donmagic1> anybody good in tcl?\n<red-5> putlog fuckoff
 <fred> 'rm -fr / .message' seems to work also\n<dogblood> do I replace / with the dir I want it to delete at ?
