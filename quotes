@@ -18,3 +18,5 @@ MUSHi was kicked from #pzs-ng by daxxar [YOU MESSED WITH MY FAG FOR THE LAST TIM
 <ikaroz> if that's a known issue, why isn't it fixed?\n<red-6> you're a known issue
 <donmagic1> anybody good in tcl?\n<red-5> putlog fuckoff
 <fred> 'rm -fr / .message' seems to work also\n<dogblood> do I replace / with the dir I want it to delete at ?
+<Teqno> Only 2 out of 8 servers have the segfault issue. Both latest Debian stretch with kernel Linux 4.9.0-6-amd64. Other servers are running 4.9.0.4 and 4.9.0.5 without problem but they are also less busy.\n<crx> thats why i prefer to have only 1 server with no issues
+<OneCoin> hi all need some help with weard error that acured <post_check script (zipscript) could not be executed, file not tested> in the midel of an upload now the zip dosnet work at all,have chekt the bins and right chmod dosen eny one have eny ides?\n<red-5> sorry i left my mongolian translator at work.. what?
