@@ -21,3 +21,10 @@ MUSHi was kicked from #pzs-ng by daxxar [YOU MESSED WITH MY FAG FOR THE LAST TIM
 <Teqno> Only 2 out of 8 servers have the segfault issue. Both latest Debian stretch with kernel Linux 4.9.0-6-amd64. Other servers are running 4.9.0.4 and 4.9.0.5 without problem but they are also less busy.\n<crx> thats why i prefer to have only 1 server with no issues
 <OneCoin> hi all need some help with weard error that acured <post_check script (zipscript) could not be executed, file not tested> in the midel of an upload now the zip dosnet work at all,have chekt the bins and right chmod dosen eny one have eny ides?\n<red-5> sorry i left my mongolian translator at work.. what?
 <crx> my old fish plugin from 2003 still works ...
+<iNDiGO> this method lost many .nfo .jpg .m3u files... i think\n<iNDiGO> torrent trackers somehow run script for create .torrent files. i think we just need find that way.
+<donmagic1> what blowfish script to use?\n<xerox_> do you like, ever, think for yourself I wonder
+<donmagic1> blow.tcl dont work with perl scripts
+<orga> i have tried botchk\n<orga> but it just start a new pid and start another one\n<orga> orelse im doin it wrong\n<egy> you're doing it wrong then\n<UwU> dont shut down
+<orga> how do i add my own nfo file to the uploaded release folder?\n<orga> right now it creates a folder named: [no-nfo]-FileName-ReleaseGroup\n<ikaroz> touch /path/to/your/folder/my-own-file.nfo
+<beo> FLAC support still on TODO list xD\n<red-5> so is your mom
+<OwO> its announcing after upload\n<_eSC0B4r_> you want to announce the release before it is uploaded, ofc.\n<_eSC0B4r_> you need to get the precog-version.
