@@ -11,7 +11,7 @@ a:link, a:active, a:visited, a:hover {
 }
 
 .keyword {
-	color: #FF0;
+	color: #FFFF00;
 }
  
 .mirror_links a {
@@ -50,3 +50,22 @@ iframe#google_ads_frame1 {
 .hide {
 	display: none;
 }
+
+.notice {
+	color: #FF0000;
+}
+
+.links a {
+	text-decoration: underline;
+        color: #BBBBBB;
+}
+
+.no_links a {
+	text-decoration: none;
+        color: #BBBBBB;
+}
+
+.repo {
+        color: #00FFFF;
+}
+
