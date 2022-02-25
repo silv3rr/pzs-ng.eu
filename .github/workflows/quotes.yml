@@ -17,10 +17,4 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: template-mirror-mini
-        run: | 
-          ./scripts/template-mirror/tmm.pl && \
-          git config --global user.name "${{ env.GIT_USER_NAME }}"  && \
-          git config --global user.email "${{ env.GIT_USER_EMAIL }}"  && \
-          git add quotes.html && \
-          git commit -m "quotes++" && \
-          git push
+        run: ./scripts/template-mirror/tmm.pl
