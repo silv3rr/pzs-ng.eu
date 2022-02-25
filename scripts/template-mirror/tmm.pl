@@ -84,7 +84,7 @@ if ( $quotes_only == 1 ) {
   generate_page($page, @{$templates{$page}});
   if ($0 =~ /pre-commit/ || $ENV{'CI'}) {
     print "    - Checking quotes for changes.\n";
-    print(qx/git diff --name-status .\/quotes.html/ =~ /^M\s+quotes.html$/);
+    if(qx/git diff --name-status .\/quotes.html/ =~ /^M\s+quotes.html$/) {
       print "    - Running git add.\n";
       system("git", "add", "quotes.html");
       if ($ENV{'CI'}) {
