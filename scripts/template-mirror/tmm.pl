@@ -84,7 +84,7 @@ if ( $quotes_only == 1 ) {
   generate_page($page, @{$templates{$page}});
   if ($0 =~ /pre-commit/ || $ENV{'CI'}) {
     print "    - Checking quotes for changes.\n";
-    print("DEBUG: START"\n);
+    print("DEBUG: START\n");
     print(qx/git diff --name-status .\/quotes/ =~ /^M\s+quotes$/);
     print("DEBUG: END\n");
     if (qx/git diff --name-status .\/quotes/ =~ /^M\s+quotes$/) {
