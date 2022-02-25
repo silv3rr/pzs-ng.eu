@@ -1,0 +1,26 @@
+name: create-quotes
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+  workflow_dispatch:
+
+env:
+  GIT_USER_NAME: github-actions[bot]
+  GIT_USER_EMAIL: 41898282+github-actions[bot]@users.noreply.github.com
+
+jobs:
+  gen_quotes:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: template-mirror-mini
+        run: | 
+          ./scripts/template-mirror/tmm.pl && \
+          git config --global user.name "${{ env.GIT_USER_NAME }}"  && \
+          git config --global user.email "${{ env.GIT_USER_EMAIL }}"  && \
+          git add quotes.html && \
+          git commit -m "quotes++" && \
+          git push
