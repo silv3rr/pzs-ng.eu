@@ -79,19 +79,19 @@ closedir(TEMPLATEDIR);
 
 if ( $quotes_only == 1 ) {
   print "   - Generating quotes page only.\n";
-  $page = "quotes.html";
+  $page = "$vars{'quotes_file'}.html";
   print "    - Generating $page.\n";
   generate_page($page, @{$templates{$page}});
   if ($0 =~ /pre-commit/ || $ENV{'CI'}) {
     print "    - Checking quotes for changes.\n";
-    if(qx/git diff --name-status .\/quotes.html/ =~ /^M\s+quotes.html$/) {
+    if(qx/git diff --name-status $vars{'quotes_file'}/ =~ /^M\s+${page}$/) {
       print "    - Running git add.\n";
-      system("git", "add", "quotes.html");
+      system("git", "add", $page);
       if ($ENV{'CI'}) {
         system("git", "config", "--global", "user.name", "$ENV{'GIT_USER_NAME'}");
         system("git", "config", "--global", "user.email", "$ENV{'GIT_USER_EMAIL'}");
         print "    - Running git commit.\n";
-        system("git", "commit", "-m", "quotes++", "quotes.html");
+        system("git", "commit", "-m", "quotes++", $page);
         print "    - Running git push.\n";
         system("git", "push");
       }

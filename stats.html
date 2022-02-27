@@ -2,9 +2,14 @@
 <html lang="en">
 <head>
   <script src="piwik.js"></script>
-  <script src="quotes.js"></script>
   <link rel="stylesheet" type="text/css" href="style.css">
   <title>pzs-ng: Project Zipscript Next Generation- stats</title>
+
+  <script src="https://code.highcharts.com/highcharts.js"></script>
+  <script src="https://code.highcharts.com/modules/data.js"></script>
+  <script src="https://code.highcharts.com/modules/exporting.js"></script>
+  <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+
 </head>
 <body>
 Welcome to pzs-ng (Project Zipscript - Next Generation) <b>stats.</b><br>
@@ -13,7 +18,19 @@ Welcome to pzs-ng (Project Zipscript - Next Generation) <b>stats.</b><br>
 <b>STATISTICS:</b>
 <br>
 <br>
-<table>
+
+<figure class="highcharts-figure">
+    <div id="container"></div>
+    <p class="highcharts-description">
+        Chart showing how an HTML table can be used as the data source for the
+        chart using the Highcharts data module. The chart is built by
+        referencing the existing HTML data table in the page. Several common
+        data source types are available, including CSV and Google Spreadsheet.
+    </p>
+
+
+<table id="datatable">
+<!--
     <caption>git shortlog -s</caption>
     <colgroup>
         <col>
@@ -22,13 +39,16 @@ Welcome to pzs-ng (Project Zipscript - Next Generation) <b>stats.</b><br>
         <col>
         <col>
     </colgroup>
-    <tr>
-        <th scope="col"></th>
-        <th scope="col">language</th>
-        <th scope="col">from</th>
-        <th scope="col">to</th>
-        <th scope="col">commits</th>
-    </tr>
+-->    
+    <thead>
+        <tr>
+            <th scope="col"></th>
+            <th scope="col">language</th>
+            <th scope="col">from</th>
+            <th scope="col">to</th>
+            <th scope="col">commits</th>
+        </tr>
+    </thead>
     <tbody>
         <tr>
             <td>psxc</td>
@@ -160,6 +180,7 @@ Welcome to pzs-ng (Project Zipscript - Next Generation) <b>stats.</b><br>
         </tr>
     </tbody>
 </table>
+<figure>
 <br>
 <b>*</b> included are authors with 3+ commits<br>
 &nbsp; tallied up commits of authors with multiple nicks<br>
@@ -253,5 +274,35 @@ Greetings wof, your op is my command ;)
 <!-- Matomo Image Tracker--><noscript>
 <img src="https://stats.pzs-ng.eu/piwik/piwik.php?idsite=18&rec=1" style="border:0" alt="" />
 </noscript><!-- End Matomo -->
+
+
+
+<script>
+    Highcharts.chart('container', {
+    data: {
+        table: 'datatable'
+    },
+    chart: {
+        type: 'column'
+    },
+    title: {
+        text: 'Data extracted from a HTML table in the page'
+    },
+    yAxis: {
+        allowDecimals: false,
+        title: {
+            text: 'commits'
+        }
+    },
+    tooltip: {
+        formatter: function () {
+            return '<b>' + this.series.name + '</b><br/>' +
+                this.point.y + ' ' + this.point.name.toLowerCase();
+        }
+    }
+});
+</script>
+
+
 </body>
 </html>
