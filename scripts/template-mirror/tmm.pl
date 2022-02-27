@@ -80,7 +80,7 @@ closedir(TEMPLATEDIR);
 if ( $quotes_only == 1 ) {
   if ($0 =~ /pre-commit/ || $ENV{'CI'}) {
     print "  - Checking quotes for changes.\n";
-    $g = qx(git diff --name-status HEAD~1 $vars{'quotes_file'});
+    $g = qx(git diff --name-status HEAD~1 -- $vars{'quotes_file'});
     $b = qx(basename $vars{quotes_file});
     if ( $g !~ /^M\s+${b}$/) {
     print "    - No changes, exiting...\n";
