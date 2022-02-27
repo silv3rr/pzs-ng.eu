@@ -13,8 +13,8 @@ my %vars = (
   #templatedir => $ENV{'HOME'} . '/dev/pzs-ng-scripts/template-mirror/templates',
   #quotes_file => $ENV{'HOME'} . '/dev/pzs-ng.eu/quotes',
   #outputdir => $ENV{'HOME'} . '/dev/pzs-ng.eu'
-  templatedir => './scripts/template-mirror/templates',
-  quotes_file => './quotes',
+  templatedir => 'scripts/template-mirror/templates',
+  quotes_file => 'quotes',
   outputdir => '.'
 );
 my %templates;
@@ -78,17 +78,16 @@ while ((my $entry = readdir(TEMPLATEDIR))) {
 closedir(TEMPLATEDIR);
 
 if ( $quotes_only == 1 ) {
+  $page = "$vars{quotes_file}.html";
   if ($0 =~ /pre-commit/ || $ENV{'CI'}) {
     print "  - Checking quotes for changes.\n";
     $g = qx(git diff --name-status HEAD~1 -- $vars{'quotes_file'});
-    $b = qx(basename $vars{quotes_file});
     if ( $g !~ /^M\s+${b}$/) {
     print "    - No changes, exiting...\n";
       exit 0;
     }
   }
   print "   - Generating quotes page only.\n";
-  $page = "$vars{quotes_file}.html";
   print "    - Generating $page.\n";
   generate_page($page, @{$templates{$page}});
   if ($0 =~ /pre-commit/ || $ENV{'CI'}) {
