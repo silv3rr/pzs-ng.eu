@@ -1,5 +1,5 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
   <link rel="stylesheet" type="text/css" href="style.css"/>
   <title>pzs-ng: Project Zipscript Next Generation</title>
@@ -7,7 +7,7 @@
 </head>
 <body>
 Welcome to pzs-ng (Project Zipscript - Next Generation) <b>quotes</b><br>
-<div class="mirror_links">main page: <a href="index.html">index.html</a></div><br><br>
+<div class="margin3">main page: <a href="index.html">index.html</a></div><br><br>
 %quotes
 <br>
 Meet us at <a target=_blank href="http://www.efnet.org">EFnet</a> channel #pzs-ng<br>
