@@ -25,7 +25,7 @@ jobs:
       - name: Get changed files
         id: changes
         run: |
-          echo "::set-output name=quotes::$(git diff --name-only --diff-filter=ACMRT HEAD^ quotes)"
+          echo "::set-output name=quotes::$(git diff --name-only --diff-filter=ACMRT HEAD^ -- quotes)"
   generate_quotes:
     needs: changedfiles
     if: ${{needs.changedfiles.outputs.quotas}}
