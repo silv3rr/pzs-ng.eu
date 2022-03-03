@@ -84,7 +84,7 @@ if ( $quotes_only == 1 ) {
     $diff = qx(git diff --name-only --diff-filter=ACMRT HEAD^ -- $vars{quotes_file});
     chomp($diff);
     print("diff=$diff vars_qf=$vars{quotes_file}");
-    if ($diff == $vars{quotes_file}) {
+    if ($diff != $vars{quotes_file}) {
     print "    - No changes, exiting...\n";
       exit 0;
     }
