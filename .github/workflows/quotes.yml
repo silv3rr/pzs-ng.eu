@@ -6,6 +6,8 @@ on:
       - 'quotes'
     branches: [ master ]
   pull_request:
+    paths:
+      - 'quotes'
     branches: [ master ]
   workflow_dispatch:
 
