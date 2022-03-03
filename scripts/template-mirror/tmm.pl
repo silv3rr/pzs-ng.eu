@@ -94,14 +94,14 @@ if ( $quotes_only == 1 ) {
   generate_page($page, @{$templates{$page}});
   if ($0 =~ /pre-commit/ || $ENV{CI}) {
     print "    - Running git add.\n";
-    system("git", "add", $page);
+    system("git", "add", "--force", $page);
     if ($ENV{CI}) {
       system("git", "config", "--global", "user.name", "$ENV{GIT_USER_NAME}");
       system("git", "config", "--global", "user.email", "$ENV{GIT_USER_EMAIL}");
       print "    - Running git commit.\n";
       system("git", "commit", "-m", "quotes++", $page);
       print "    - Running git push.\n";
-      system("git", "push", "-f");
+      system("git", "push");
     }
   }
 } else {
