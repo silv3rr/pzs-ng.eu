@@ -19,8 +19,8 @@ jobs:
   changedfiles:
     runs-on: ubuntu-latest
     # Map a step output to a job output
-    outputs:
-      quotes: ${{ steps.changes.outputs.quotes }}
+    #outputs:
+    #  quotes: ${{ steps.changes.outputs.quotes }}
     steps:
         # Make sure we have some code to diff.
       - name: Checkout repository
@@ -29,7 +29,8 @@ jobs:
         id: changes
         # Set outputs using the command.
         run: |
-          echo "::set-output name=quotes::$(git diff --name-only --diff-filter=ACMRT ${{ github.event.pull_request.base.sha }} ${{ github.sha }} | grep quotes$ | xargs)"
+          #echo "::set-output name=quotes::$(git diff --name-only --diff-filter=ACMRT ${{ github.event.pull_request.base.sha }} ${{ github.sha }} | grep quotes$ | xargs)"
+          echo "::set-output name=quotes::$(git diff --name-only --diff-filter=ACMRT HEAD^ ${{ github.sha }} | grep quotes$ | xargs)"
   generate_quotes:
     # require the first job to have ran
     needs: changedfiles
