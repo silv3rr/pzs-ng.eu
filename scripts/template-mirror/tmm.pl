@@ -81,7 +81,7 @@ if ( $quotes_only == 1 ) {
   $page = "$vars{quotes_file}.html";
   if ($0 =~ /pre-commit/ || $ENV{'CI'}) {
     print "  - Checking quotes for changes.\n";
-    $g = qx(git diff --name-status HEAD~1 -- $vars{'quotes_file'});
+    $g = qx(git diff --name-only --diff-filter=ACMRT HEAD^ -- $vars{'quotes_file'});
     if ( $g !~ /^M\s+${b}$/) {
     print "    - No changes, exiting...\n";
       exit 0;
