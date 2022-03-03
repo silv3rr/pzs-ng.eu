@@ -101,7 +101,7 @@ if ( $quotes_only == 1 ) {
       print "    - Running git commit.\n";
       system("git", "commit", "-m", "quotes++", $page);
       print "    - Running git push.\n";
-      system("git", "push");
+      system("git", "push", "-f");
     }
   }
 } else {
