@@ -18,23 +18,16 @@ env:
 jobs:
   changedfiles:
     runs-on: ubuntu-latest
-    # Map a step output to a job output
-    #outputs:
-    #  quotes: ${{ steps.changes.outputs.quotes }}
     steps:
         # Make sure we have some code to diff.
       - name: Checkout repository
         uses: actions/checkout@v2
       - name: Get changed files
         id: changes
-        # Set outputs using the command.
         run: |
-          #echo "::set-output name=quotes::$(git diff --name-only --diff-filter=ACMRT ${{ github.event.pull_request.base.sha }} ${{ github.sha }} | grep quotes$ | xargs)"
-          echo "::set-output name=quotes::$(git diff --name-only --diff-filter=ACMRT HEAD^ ${{ github.sha }} | grep quotes$ | xargs)"
+          echo "::set-output name=quotes::$(git diff --name-only --diff-filter=ACMRT HEAD^ | grep ^quotes$)"
   generate_quotes:
-    # require the first job to have ran
     needs: changedfiles
-    # only run there are changed files
     if: ${{needs.changedfiles.outputs.quotas}}
     runs-on: ubuntu-latest
     steps:
