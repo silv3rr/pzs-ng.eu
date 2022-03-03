@@ -21,9 +21,9 @@ jobs:
     steps:
         # Make sure we have some code to diff.
       - name: Checkout repository
+        uses: actions/checkout@v2
         with:
           fetch-depth: 0
-        uses: actions/checkout@v2
       - name: Get changed files
         id: changes
         run: |
