@@ -82,7 +82,7 @@ if ( $quotes_only == 1 ) {
   if ($0 =~ /pre-commit/ || $ENV{CI}) {
     print "  - Checking quotes for changes.\n";
     $g = qx(git diff --name-only --diff-filter=ACMRT HEAD^ -- $vars{quotes_file});
-    if ( $g !~ /^M\s+${b}$/) {
+    if ( $g !~ /^M\s+$vars{quotes_file}/) {
     print "    - No changes, exiting...\n";
       exit 0;
     }
