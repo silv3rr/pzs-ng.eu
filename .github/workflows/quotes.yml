@@ -3,9 +3,11 @@ name: create-quotes
 on:
   push:
     paths:
-      - '/quotes'
+      - 'quotes'
     branches: [ master ]
   pull_request:
+    paths:
+      - 'quotes'
     branches: [ master ]
   workflow_dispatch:
 
