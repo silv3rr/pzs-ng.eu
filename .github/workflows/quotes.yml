@@ -16,21 +16,7 @@ env:
   GIT_USER_EMAIL: 41898282+github-actions[bot]@users.noreply.github.com
 
 jobs:
-  changedfiles:
-    runs-on: ubuntu-latest
-    steps:
-        # Make sure we have some code to diff.
-      - name: Checkout repository
-        uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
-      - name: Get changed files
-        id: changes
-        run: |
-          echo "::set-output name=quotes::$(git diff --name-only --diff-filter=ACMRT HEAD^ -- quotes)"
   generate_quotes:
-    needs: changedfiles
-    if: ${{needs.changedfiles.outputs.quotas}}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -38,10 +24,13 @@ jobs:
           fetch-depth: 0
       - name: debug
         run: |
-          echo "DEBUG: changedfiles=${{needs.changedfiles.outputs.quotas}}"
+          echo "DEBUG: diff"
+          git diff --name-only --diff-filter=ACMRT HEAD^ -- quotes
           #echo "DEBUG: git log"
           #git  --no-pager log --pretty=oneline -10
           #echo "DEBUG: git diff"
           #git diff --name-status HEAD~1 -- 
       - name: template-mirror-mini
-        run: ./scripts/template-mirror/tmm.pl
+        run: |
+          git diff --name-only --diff-filter=ACMRT HEAD^ -- quotes && \
+          ./scripts/template-mirror/tmm.pl
