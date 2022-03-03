@@ -94,6 +94,11 @@ iframe#google_ads_frame1 {
     color: #FFFF00;
 }
 
+.archive {
+    color: #626262;
+    font-weight: bold;
+}
+
 table {
     border-collapse: collapse;
     table-layout: fixed;
