@@ -20,7 +20,7 @@ my %vars = (
 my %templates;
 
 my @quotes;
-open(QUOTES, $vars{'quotes_file'});
+open(QUOTES, $vars{quotes_file});
 push(@quotes, $_) while <QUOTES>;
 close(QUOTES);
 
@@ -58,10 +58,10 @@ sub generate_page {
   1;
 }
 
-$vars{'outputdir'} =~ s/\/+$//g;
-$vars{'templatedir'} =~ s/\/+$//g;
+$vars{outputdir} =~ s/\/+$//g;
+$vars{templatedir} =~ s/\/+$//g;
 print " * Start.\n";
-opendir(TEMPLATEDIR, $vars{'templatedir'});
+opendir(TEMPLATEDIR, $vars{templatedir});
 while ((my $entry = readdir(TEMPLATEDIR))) {
   my $fentry = "$vars{templatedir}/$entry";
   if (! -f $fentry) { next; }
@@ -79,9 +79,9 @@ closedir(TEMPLATEDIR);
 
 if ( $quotes_only == 1 ) {
   $page = "$vars{quotes_file}.html";
-  if ($0 =~ /pre-commit/ || $ENV{'CI'}) {
+  if ($0 =~ /pre-commit/ || $ENV{CI}) {
     print "  - Checking quotes for changes.\n";
-    $g = qx(git diff --name-only --diff-filter=ACMRT HEAD^ -- $vars{'quotes_file'});
+    $g = qx(git diff --name-only --diff-filter=ACMRT HEAD^ -- $vars{quotes_file});
     if ( $g !~ /^M\s+${b}$/) {
     print "    - No changes, exiting...\n";
       exit 0;
@@ -90,12 +90,12 @@ if ( $quotes_only == 1 ) {
   print "   - Generating quotes page only.\n";
   print "    - Generating $page.\n";
   generate_page($page, @{$templates{$page}});
-  if ($0 =~ /pre-commit/ || $ENV{'CI'}) {
+  if ($0 =~ /pre-commit/ || $ENV{CI}) {
     print "    - Running git add.\n";
     system("git", "add", $page);
-    if ($ENV{'CI'}) {
-      system("git", "config", "--global", "user.name", "$ENV{'GIT_USER_NAME'}");
-      system("git", "config", "--global", "user.email", "$ENV{'GIT_USER_EMAIL'}");
+    if ($ENV{CI}) {
+      system("git", "config", "--global", "user.name", "$ENV{GIT_USER_NAME}");
+      system("git", "config", "--global", "user.email", "$ENV{GIT_USER_EMAIL}");
       print "    - Running git commit.\n";
       system("git", "commit", "-m", "quotes++", $page);
       print "    - Running git push.\n";
