@@ -24,7 +24,9 @@ jobs:
           fetch-depth: 0
       - name: debug
         run: |
-          git  --no-pager log   --pretty=oneline -10
+          echo "DEBUG: git log"
+          git  --no-pager log --pretty=oneline -10
+          echo "DEBUG: git diff"
           git diff --name-status HEAD~1 -- 
       - name: template-mirror-mini
         run: ./scripts/template-mirror/tmm.pl
