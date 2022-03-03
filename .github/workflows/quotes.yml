@@ -3,7 +3,7 @@ name: create-quotes
 on:
   push:
     paths:
-      - '/quotes'
+      - 'quotes'
     branches: [ master ]
   pull_request:
     branches: [ master ]
