@@ -7,7 +7,12 @@
 </head>
 <body>
 Welcome to pzs-ng (Project Zipscript - Next Generation) <b>quotes</b><br>
-<div class="margin3">main page: <a href="index.html">index.html</a></div><br><br>
+<div class="margin3">main page: <a href="index.html">index.html</a> | <a href="quotes.html">quotes.html</a> | <a href="stats.html">stats.html</a> | <a href="disclaimer.html">disclaimer.html</a></div><br>
+<br>
+<b>IRC QUOTES:</b><br>
+-----------<br>
+<br>
+<br>
 %quotes
 <br>
 Meet us at <a target=_blank href="http://www.efnet.org">EFnet</a> channel #pzs-ng<br>
