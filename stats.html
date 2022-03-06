@@ -3,7 +3,7 @@
 <head>
     <script src="js/piwik.js"></script>
     <script src="js/chart.min.js"></script>
-    <script src="js/chartjs-plugin-datalabels@2.0.0.js"></script>
+    <script src="js/chartjs-plugin-datalabels.min.js"></script>
     <script src="js/htmlchart.js"></script>
     <link rel="stylesheet" type="text/css" href="style.css">
     <title>pzs-ng: Project Zipscript Next Generation - stats</title>
@@ -16,504 +16,546 @@ Welcome to pzs-ng (Project Zipscript - Next Generation) <b>stats.</b><br>
 -----------<br>
 <br>
 <div style="display:flex;">
-<div style="width:650px;">
-<table class="table" id="dataTableAuthor">
-    <caption>git shortlog -s</caption>
-    <thead>
-        <tr>
-            <th></th>
-            <th>language</th>
-            <th>from</th>
-            <th>to</th>
-            <th>commits</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>psxc</td>
-            <td>all</td>
-            <td>2004</td>
-            <td>2020</td>
-            <td>1165</td>
-            <td></td>
-        </tr>
-        <tr>
-            <td>daxxar</td>
-            <td>all</td>
-            <td>2004</td>
-            <td>2012</td>
-            <td>306</td>
-            <td></td>
-        </tr>
-        <tr>
-            <td>js</td>
-            <td>c</td>
-            <td>2004</td>
-            <td>2006</td>
-            <td>274</td>
-            <td></td>
-        </tr>
-        <tr>
-            <td>sked</td>
-            <td>c</td>
-            <td>2007</td>
-            <td>2020</td>
-            <td>183</td>
-            <td></td>
-        </tr>
-        <tr>
-            <td>iwdisb</td>
-            <td>c</td>
-            <td>2005</td>
-            <td>2007</td>
-            <td>144</td>
-            <td></td>
-        </tr>
-        <tr>
-            <td>neoxed</td>
-            <td>tcl</td>
-            <td>2004</td>
-            <td>2007</td>
-            <td>123</td>
-            <td></td>
-        </tr>
-        <tr>
-            <td>meij</td>
-            <td>tcl</td>
-            <td>2006</td>
-            <td>2009</td>
-            <td>54</td>
-            <td></td>
-        </tr>
-        <tr>
-            <td>dakrer</td>
-            <td>tcl</td>
-            <td>2004</td>
-            <td>2007</td>
-            <td>47</td>
-            <td></td>
-        </tr>
-        <tr>
-            <td>juanker</td>
-            <td>tcl</td>
-            <td>2004</td>
-            <td>2005</td>
-            <td>43</td>
-            <td></td>
-        </tr>
-        <tr>
-            <td>avizion</td>
-            <td>tcl</td>
-            <td>2005</td>
-            <td>2010</td>
-            <td>42</td>
-            <td></td>
-        </tr>
-        <tr>
-            <td>themoles</td>
-            <td>tcl</td>
-            <td>2004</td>
-            <td>2005</td>
-            <td>12</td>
-            <td></td>
-        </tr>
-        <tr>
-            <td>iono</td>
-            <td>tcl</td>
-            <td>2004</td>
-            <td>2004</td>
-            <td>6</td>
-            <td></td>
-        </tr>
-        <tr>
-            <td>tittof</td>
-            <td>c</td>
-            <td>2015</td>
-            <td>2017</td>
-            <td>3</td>
-            <td></td>
-        </tr>
-        <tr>
-            <td>freezy3k</td>
-            <td>c</td>
-            <td>2004</td>
-            <td>2005</td>
-            <td>3</td>
-            <td></td>
-        </tr>
-        <tr>
-            <td>comp</td>
-            <td>sh, tcl</td>
-            <td>2007</td>
-            <td>2009</td>
-            <td>3</td>
-            <td></td>
-        </tr>
-        <tr>
-            <td>slv</td>
-            <td>sh, tcl</td>
-            <td>2007</td>
-            <td>2022</td>
-            <td>3</td>
-            <td></td>
-        </tr>
-        <br>  </td>
-    </tbody>
-</table>
-<br>
-<br>
-<b>*</b> included are authors with 3+ commits<br>
-&nbsp; commits of authors with multiple nicks were tallied<br>
-</div>
-<br>
-<br>
-<br>
-<div style="flex:1;padding-top:15px">
-<table class="table" id="dataTableYear">
-    <caption>git log %cd %Y</caption>
-    <tr>
-        <th style="visibility:hidden;">year</th>
-        <th>highlights</th>
-        <th>total_commits</th>
-    </tr>
-    <tbody>
-        <tr>
-            <td>2020</td>
-            <td>final change may 6th</td>
-            <td>8</td>
-        </tr>
-        <tr>
-            <td>2019</td>
-            <td></td>
-            <td>5</td>
-        </tr>
-        <tr>
-            <td>2018</td>
-            <td></td>
-            <td>1</td>
-        </tr>
-        <tr>
-            <td>2017</td>
-            <td>refactored remove_lock</td>
-            <td>34</td>
-        </tr>
-        <tr>
-            <td>2016</td>
-            <td></td>
-            <td>19</td>
-        </tr>
-        <tr>
-            <td>2015</td>
-            <td></td>
-            <td>21</td>
-        </tr>
-        <tr>
-            <td>2014</td>
-            <td>crc_algo</td>
-            <td>30</td>
-        </tr>
-        <tr>
-            <td>2013</td>
-            <td>refactored sfv parsing</td>
-            <td>11</td>
-        </tr>
-        <tr>
-            <td>2012</td>
-            <td>flac support</td>
-            <td>65</td>
-        </tr>
-        <tr>
-            <td>2011</td>
-            <td>sked revives project</td>
-            <td style="color:red">0</td>
-        </tr>
-        <tr>
-            <td>2010</td>
-            <td>missing commits r2569</td>
-            <td style="color:red">0</td>
-        </tr>
-        <tr>
-            <td>2009</td>
-            <td>ngBot replaces dZBot</td>
-            <td>59</td>
-        </tr>
-        <tr>
-            <td>2008</td>
-            <td>cuftpd support, psxc-imdb updates</td>
-            <td>63</td>
-        </tr>
-        <tr>
-            <td>2007</td>
-            <td>sample support, Blow.tcl, BSD license</td>
-            <td>161</td>
-        </tr>
-        <tr>
-            <td>2006</td>
-            <td>autotools, rescan changes, 64bit support</td>
-            <td>137</td>
-        </tr>
-        <tr>
-            <td>2005</td>
-            <td>v1.0final, bot plugins, speedtest</td>
-            <td style="color:#00FF00">874</td>
-        </tr>
-        <tr>
-            <td>2004</td>
-            <td>zs cleanup, gl2, sep bot conf</td>
-            <td style="color:#00FF00">926</td>
-        </tr>
-    <tbody>
-</table>
-</div>
+    <div style="width:650px;">
+        <table class="table" id="dataTableAuthor">
+            <caption>git shortlog -s</caption>
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>language</th>
+                    <th>from</th>
+                    <th>to</th>
+                    <th>commits</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>psxc</td>
+                    <td>all</td>
+                    <td>2004</td>
+                    <td>2020</td>
+                    <td>1165</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>daxxar</td>
+                    <td>all</td>
+                    <td>2004</td>
+                    <td>2012</td>
+                    <td>306</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>js</td>
+                    <td>c</td>
+                    <td>2004</td>
+                    <td>2006</td>
+                    <td>274</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>sked</td>
+                    <td>c</td>
+                    <td>2007</td>
+                    <td>2020</td>
+                    <td>183</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>iwdisb</td>
+                    <td>c</td>
+                    <td>2005</td>
+                    <td>2007</td>
+                    <td>144</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>neoxed</td>
+                    <td>tcl</td>
+                    <td>2004</td>
+                    <td>2007</td>
+                    <td>123</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>meij</td>
+                    <td>tcl</td>
+                    <td>2006</td>
+                    <td>2009</td>
+                    <td>54</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>dakrer</td>
+                    <td>tcl</td>
+                    <td>2004</td>
+                    <td>2007</td>
+                    <td>47</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>juanker</td>
+                    <td>tcl</td>
+                    <td>2004</td>
+                    <td>2005</td>
+                    <td>43</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>avizion</td>
+                    <td>tcl</td>
+                    <td>2005</td>
+                    <td>2010</td>
+                    <td>42</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>themoles</td>
+                    <td>tcl</td>
+                    <td>2004</td>
+                    <td>2005</td>
+                    <td>12</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>iono</td>
+                    <td>tcl</td>
+                    <td>2004</td>
+                    <td>2004</td>
+                    <td>6</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>tittof</td>
+                    <td>c</td>
+                    <td>2015</td>
+                    <td>2017</td>
+                    <td>3</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>freezy3k</td>
+                    <td>c</td>
+                    <td>2004</td>
+                    <td>2005</td>
+                    <td>3</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>comp</td>
+                    <td>sh, tcl</td>
+                    <td>2007</td>
+                    <td>2009</td>
+                    <td>3</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>slv</td>
+                    <td>sh, tcl</td>
+                    <td>2007</td>
+                    <td>2022</td>
+                    <td>3</td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+        <br>
+        <br>
+        <b>*</b> included are authors with 3+ commits<br>
+        &nbsp; commits of authors with multiple nicks were tallied<br>
+    </div>
+    <br>
+    <br>
+    <br>
+    <div style="flex:1;padding-top:15px">
+        <table class="table" id="dataTableYear">
+            <caption>git log %cd %Y</caption>
+            <tr>
+                <th style="visibility:hidden;">year</th>
+                <th>highlights</th>
+                <th>total_commits</th>
+            </tr>
+            <tbody>
+                <tr>
+                    <td>2020</td>
+                    <td>final change may 6th</td>
+                    <td>8</td>
+                </tr>
+                <tr>
+                    <td>2019</td>
+                    <td></td>
+                    <td>5</td>
+                </tr>
+                <tr>
+                    <td>2018</td>
+                    <td></td>
+                    <td>1</td>
+                </tr>
+                <tr>
+                    <td>2017</td>
+                    <td>refactored remove_lock</td>
+                    <td>34</td>
+                </tr>
+                <tr>
+                    <td>2016</td>
+                    <td></td>
+                    <td>19</td>
+                </tr>
+                <tr>
+                    <td>2015</td>
+                    <td></td>
+                    <td>21</td>
+                </tr>
+                <tr>
+                    <td>2014</td>
+                    <td>crc_algo</td>
+                    <td>30</td>
+                </tr>
+                <tr>
+                    <td>2013</td>
+                    <td>refactored sfv parsing</td>
+                    <td>11</td>
+                </tr>
+                <tr>
+                    <td>2012</td>
+                    <td>flac support</td>
+                    <td>65</td>
+                </tr>
+                <tr>
+                    <td>2011</td>
+                    <td>sked revives project</td>
+                    <td style="color:red">0</td>
+                </tr>
+                <tr>
+                    <td>2010</td>
+                    <td>missing commits r2569</td>
+                    <td style="color:red">0</td>
+                </tr>
+                <tr>
+                    <td>2009</td>
+                    <td>ngBot replaces dZBot</td>
+                    <td>59</td>
+                </tr>
+                <tr>
+                    <td>2008</td>
+                    <td>cuftpd support, psxc-imdb updates</td>
+                    <td>63</td>
+                </tr>
+                <tr>
+                    <td>2007</td>
+                    <td>sample support, Blow.tcl, BSD license</td>
+                    <td>161</td>
+                </tr>
+                <tr>
+                    <td>2006</td>
+                    <td>autotools, rescan changes, 64bit support</td>
+                    <td>137</td>
+                </tr>
+                <tr>
+                    <td>2005</td>
+                    <td>v1.0final, bot plugins, speedtest</td>
+                    <td style="color:#00FF00">874</td>
+                </tr>
+                <tr>
+                    <td>2004</td>
+                    <td>zs cleanup, gl2, sep bot conf</td>
+                    <td style="color:#00FF00">926</td>
+                </tr>
+            <tbody>
+        </table>
+    </div>
 </div>
 <br>
 <br>
 <div style="display:flex;">
-<div>
-<table class="table" id="gitfame">
-    <caption>gitfame</caption>
-    <thead>
-        <tr>
-            <th style="text-align:left">author</th>
-            <th style="text-align:right">loc</th>
-            <th style="text-align:right">coms</th>
-            <th style="text-align:right">fils</th>
-            <th style="text-align:right">distribution</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td style="text-align:left">psxc</td>
-            <td style="text-align:right">22848</td>
-            <td style="text-align:right">1165</td>
-            <td style="text-align:right">137</td>
-            <td style="text-align:right">39.2/48.3/23.5</td>
-        </tr>
-        <tr>
-            <td style="text-align:left">daxxar</td>
-            <td style="text-align:right">10928</td>
-            <td style="text-align:right">306</td>
-            <td style="text-align:right">89</td>
-            <td style="text-align:right">18.7/12.7/15.2</td>
-        </tr>
-        <tr>
-            <td style="text-align:left">skeddie</td>
-            <td style="text-align:right">6558</td>
-            <td style="text-align:right">59</td>
-            <td style="text-align:right">82</td>
-            <td style="text-align:right">11.2/ 2.4/14.0</td>
-        </tr>
-        <tr>
-            <td style="text-align:left">js</td>
-            <td style="text-align:right">5806</td>
-            <td style="text-align:right">274</td>
-            <td style="text-align:right">59</td>
-            <td style="text-align:right">9.9/11.4/10.1</td>
-        </tr>
-        <tr>
-            <td style="text-align:left">meij</td>
-            <td style="text-align:right">5311</td>
-            <td style="text-align:right">54</td>
-            <td style="text-align:right">28</td>
-            <td style="text-align:right">9.1/ 2.2/ 4.8</td>
-        </tr>
-        <tr>
-            <td style="text-align:left">Sked</td>
-            <td style="text-align:right">3764</td>
-            <td style="text-align:right">109</td>
-            <td style="text-align:right">71</td>
-            <td style="text-align:right">6.5/ 4.5/12.2</td>
-        </tr>
-        <tr>
-            <td style="text-align:left">neoxed</td>
-            <td style="text-align:right">1318</td>
-            <td style="text-align:right">123</td>
-            <td style="text-align:right">21</td>
-            <td style="text-align:right">2.3/ 5.1/ 3.6</td>
-        </tr>
-        <tr>
-            <td style="text-align:left">iwdisb</td>
-            <td style="text-align:right">423</td>
-            <td style="text-align:right">144</td>
-            <td style="text-align:right">37</td>
-            <td style="text-align:right">0.7/ 6.0/ 6.3</td>
-        </tr>
-        <tr>
-            <td style="text-align:left">Skeddie</td>
-            <td style="text-align:right">379</td>
-            <td style="text-align:right">15</td>
-            <td style="text-align:right">23</td>
-            <td style="text-align:right">0.6/ 0.6/ 3.9</td>
-        </tr>
-        <tr>
-            <td style="text-align:left">dakrer</td>
-            <td style="text-align:right">300</td>
-            <td style="text-align:right">47</td>
-            <td style="text-align:right">4</td>
-            <td style="text-align:right">0.5/ 1.9/ 0.7</td>
-        </tr>
-        <tr>
-            <td style="text-align:left">slv</td>
-            <td style="text-align:right">261</td>
-            <td style="text-align:right">1</td>
-            <td style="text-align:right">7</td>
-            <td style="text-align:right">0.4/ 0.0/ 1.2</td>
-        </tr>
-        <tr>
-            <td style="text-align:left">juanker</td>
-            <td style="text-align:right">193</td>
-            <td style="text-align:right">43</td>
-            <td style="text-align:right">1</td>
-            <td style="text-align:right">0.3/ 1.8/ 0.2</td>
-        </tr>
-        <tr>
-            <td style="text-align:left">avizion</td>
-            <td style="text-align:right">113</td>
-            <td style="text-align:right">42</td>
-            <td style="text-align:right">13</td>
-            <td style="text-align:right">0.2/ 1.7/ 2.2</td>
-        </tr>
-        <tr>
-            <td style="text-align:left">freezy3k</td>
-            <td style="text-align:right">66</td>
-            <td style="text-align:right">3</td>
-            <td style="text-align:right">2</td>
-            <td style="text-align:right">0.1/ 0.1/ 0.3</td>
-        </tr>
-        <tr>
-            <td style="text-align:left">comp</td>
-            <td style="text-align:right">32</td>
-            <td style="text-align:right">3</td>
-            <td style="text-align:right">2</td>
-            <td style="text-align:right">0.1/ 0.1/ 0.3</td>
-        </tr>
-        <tr>
-            <td style="text-align:left">themolest</td>
-            <td style="text-align:right">29</td>
-            <td style="text-align:right">12</td>
-            <td style="text-align:right">1</td>
-            <td style="text-align:right">0.0/ 0.5/ 0.2</td>
-        </tr>
-        <tr>
-            <td style="text-align:left">tittof</td>
-            <td style="text-align:right">15</td>
-            <td style="text-align:right">3</td>
-            <td style="text-align:right">4</td>
-            <td style="text-align:right">0.0/ 0.1/ 0.7</td>
-        </tr>
-        <tr>
-            <td style="text-align:left">h-0-s-h</td>
-            <td style="text-align:right">3</td>
-            <td style="text-align:right">2</td>
-            <td style="text-align:right">1</td>
-            <td style="text-align:right">0.0/ 0.1/ 0.2</td>
-        </tr>
-        <tr>
-            <td style="text-align:left">silv3rr</td>
-            <td style="text-align:right">3</td>
-            <td style="text-align:right">1</td>
-            <td style="text-align:right">1</td>
-            <td style="text-align:right">0.0/ 0.0/ 0.2</td>
-        </tr>
-        <tr>
-            <td style="text-align:left">hujer</td>
-            <td style="text-align:right">2</td>
-            <td style="text-align:right">1</td>
-            <td style="text-align:right">1</td>
-            <td style="text-align:right">0.0/ 0.0/ 0.2</td>
-        </tr>
-        <tr>
-            <td style="text-align:left">capone</td>
-            <td style="text-align:right">0</td>
-            <td style="text-align:right">1</td>
-            <td style="text-align:right">0</td>
-            <td style="text-align:right">0.0/ 0.0/ 0.0</td>
-        </tr>
-        <tr>
-            <td style="text-align:left">iono</td>
-            <td style="text-align:right">0</td>
-            <td style="text-align:right">6</td>
-            <td style="text-align:right">0</td>
-            <td style="text-align:right">0.0/ 0.2/ 0.0</td>
-        </tr>
-    </tbody>
-</table>
-<p>Total commits: <b>2414</b><br>
-    Total ctimes: <b>16414</b><br>
-    Total files: <b>584</b><br>
-    Total loc: <b>58352</b></p>
+    <div>
+        <table class="table" id="gitfame">
+            <caption>gitfame</caption>
+            <thead>
+                <tr>
+                    <th style="text-align:left">author</th>
+                    <th style="text-align:right">loc</th>
+                    <th style="text-align:right">commits</th>
+                    <th style="text-align:right">files</th>
+                    <th style="text-align:right">distribution</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td style="text-align:left">psxc</td>
+                    <td style="text-align:right">22848</td>
+                    <td style="text-align:right">1165</td>
+                    <td style="text-align:right">137</td>
+                    <td style="text-align:right">39.2/48.3/23.5</td>
+                </tr>
+                <tr>
+                    <td style="text-align:left">daxxar</td>
+                    <td style="text-align:right">10928</td>
+                    <td style="text-align:right">306</td>
+                    <td style="text-align:right">89</td>
+                    <td style="text-align:right">18.7/12.7/15.2</td>
+                </tr>
+                <tr>
+                    <td style="text-align:left">skeddie</td>
+                    <td style="text-align:right">6558</td>
+                    <td style="text-align:right">59</td>
+                    <td style="text-align:right">82</td>
+                    <td style="text-align:right">11.2/ 2.4/14.0</td>
+                </tr>
+                <tr>
+                    <td style="text-align:left">js</td>
+                    <td style="text-align:right">5806</td>
+                    <td style="text-align:right">274</td>
+                    <td style="text-align:right">59</td>
+                    <td style="text-align:right">9.9/11.4/10.1</td>
+                </tr>
+                <tr>
+                    <td style="text-align:left">meij</td>
+                    <td style="text-align:right">5311</td>
+                    <td style="text-align:right">54</td>
+                    <td style="text-align:right">28</td>
+                    <td style="text-align:right">9.1/ 2.2/ 4.8</td>
+                </tr>
+                <tr>
+                    <td style="text-align:left">Sked</td>
+                    <td style="text-align:right">3764</td>
+                    <td style="text-align:right">109</td>
+                    <td style="text-align:right">71</td>
+                    <td style="text-align:right">6.5/ 4.5/12.2</td>
+                </tr>
+                <tr>
+                    <td style="text-align:left">neoxed</td>
+                    <td style="text-align:right">1318</td>
+                    <td style="text-align:right">123</td>
+                    <td style="text-align:right">21</td>
+                    <td style="text-align:right">2.3/ 5.1/ 3.6</td>
+                </tr>
+                <tr>
+                    <td style="text-align:left">iwdisb</td>
+                    <td style="text-align:right">423</td>
+                    <td style="text-align:right">144</td>
+                    <td style="text-align:right">37</td>
+                    <td style="text-align:right">0.7/ 6.0/ 6.3</td>
+                </tr>
+                <tr>
+                    <td style="text-align:left">Skeddie</td>
+                    <td style="text-align:right">379</td>
+                    <td style="text-align:right">15</td>
+                    <td style="text-align:right">23</td>
+                    <td style="text-align:right">0.6/ 0.6/ 3.9</td>
+                </tr>
+                <tr>
+                    <td style="text-align:left">dakrer</td>
+                    <td style="text-align:right">300</td>
+                    <td style="text-align:right">47</td>
+                    <td style="text-align:right">4</td>
+                    <td style="text-align:right">0.5/ 1.9/ 0.7</td>
+                </tr>
+                <tr>
+                    <td style="text-align:left">slv</td>
+                    <td style="text-align:right">261</td>
+                    <td style="text-align:right">1</td>
+                    <td style="text-align:right">7</td>
+                    <td style="text-align:right">0.4/ 0.0/ 1.2</td>
+                </tr>
+                <tr>
+                    <td style="text-align:left">juanker</td>
+                    <td style="text-align:right">193</td>
+                    <td style="text-align:right">43</td>
+                    <td style="text-align:right">1</td>
+                    <td style="text-align:right">0.3/ 1.8/ 0.2</td>
+                </tr>
+                <tr>
+                    <td style="text-align:left">avizion</td>
+                    <td style="text-align:right">113</td>
+                    <td style="text-align:right">42</td>
+                    <td style="text-align:right">13</td>
+                    <td style="text-align:right">0.2/ 1.7/ 2.2</td>
+                </tr>
+                <tr>
+                    <td style="text-align:left">freezy3k</td>
+                    <td style="text-align:right">66</td>
+                    <td style="text-align:right">3</td>
+                    <td style="text-align:right">2</td>
+                    <td style="text-align:right">0.1/ 0.1/ 0.3</td>
+                </tr>
+                <tr>
+                    <td style="text-align:left">comp</td>
+                    <td style="text-align:right">32</td>
+                    <td style="text-align:right">3</td>
+                    <td style="text-align:right">2</td>
+                    <td style="text-align:right">0.1/ 0.1/ 0.3</td>
+                </tr>
+                <tr>
+                    <td style="text-align:left">themolest</td>
+                    <td style="text-align:right">29</td>
+                    <td style="text-align:right">12</td>
+                    <td style="text-align:right">1</td>
+                    <td style="text-align:right">0.0/ 0.5/ 0.2</td>
+                </tr>
+                <tr>
+                    <td style="text-align:left">tittof</td>
+                    <td style="text-align:right">15</td>
+                    <td style="text-align:right">3</td>
+                    <td style="text-align:right">4</td>
+                    <td style="text-align:right">0.0/ 0.1/ 0.7</td>
+                </tr>
+                <tr>
+                    <td style="text-align:left">h-0-s-h</td>
+                    <td style="text-align:right">3</td>
+                    <td style="text-align:right">2</td>
+                    <td style="text-align:right">1</td>
+                    <td style="text-align:right">0.0/ 0.1/ 0.2</td>
+                </tr>
+                <tr>
+                    <td style="text-align:left">silv3rr</td>
+                    <td style="text-align:right">3</td>
+                    <td style="text-align:right">1</td>
+                    <td style="text-align:right">1</td>
+                    <td style="text-align:right">0.0/ 0.0/ 0.2</td>
+                </tr>
+                <tr>
+                    <td style="text-align:left">hujer</td>
+                    <td style="text-align:right">2</td>
+                    <td style="text-align:right">1</td>
+                    <td style="text-align:right">1</td>
+                    <td style="text-align:right">0.0/ 0.0/ 0.2</td>
+                </tr>
+                <tr>
+                    <td style="text-align:left">capone</td>
+                    <td style="text-align:right">0</td>
+                    <td style="text-align:right">1</td>
+                    <td style="text-align:right">0</td>
+                    <td style="text-align:right">0.0/ 0.0/ 0.0</td>
+                </tr>
+                <tr>
+                    <td style="text-align:left">iono</td>
+                    <td style="text-align:right">0</td>
+                    <td style="text-align:right">6</td>
+                    <td style="text-align:right">0</td>
+                    <td style="text-align:right">0.0/ 0.2/ 0.0</td>
+                </tr>
+            </tbody>
+        </table>
+        <p>
+            Total commits: <b>2414</b><br>
+            Total ctimes: <b>16414</b><br>
+            Total files: <b>584</b><br>
+            Total loc: <b>58352</b>
+        </p>
+    </div>
+    <br>
+    <br>
+        <div style="flex:1;padding-left:100px;">
+            <table class="table" id="ircstats">
+                <caption>irc stats</caption>
+                <tr>
+                    <th scope="row" style="visibility:hidden;">month</th>
+                    <th scope="row" colspan="3">user top3</th>
+                </tr>
+                <tr>
+                    <th scope="col"></th>
+                    <th scope="col">1.</th>
+                    <th scope="col">2.</th>
+                    <th scope="col">3.</th>
+                </tr>
+                <tbody>
+                    <tr>
+                        <td>2014-12</td>
+                        <td>p0st</td>
+                        <td>crx_</td>
+                        <td>tittof</td>
+                    </tr>
+                    <tr>
+                        <td>2009-05</td>
+                        <td>Logicwax</td>
+                        <td>cdr</td>
+                        <td>KiTTy|</td>
+                    </tr>
+                    <tr>
+                        <td>2014-10</td>
+                        <td>d3x0c
+                        <td>zeeter</td>
+                        <td>tittof</td>
+                    </tr>
+                    <tr>
+                        <td>2009-01</td>
+                        <td>infected</td>
+                        <td>psxc</td>
+                        <td>scotty</td>
+                    </tr>
+                    <tr>
+                        <td>2012-04</td>
+                        <td>cxx</td>
+                        <td>crx</td>
+                        <td>glox</td>
+                    </tr>
+                    <tr>
+                        <td>2009-07</td>
+                        <td>_d3x0c</td>
+                        <td>fr546yu</td>
+                        <td>psxc</td>
+                    </tr>
+                    <tr>
+                        <td>2008-08</td>
+                        <td>Sked|</td>
+                        <td>[b33r]
+                        <td>psxc</td>
+                    </tr>
+                    <tr>
+                        <td>2008-07</td>
+                        <td>psxc</td>
+                        <td>khaki</td>
+                        <td>|DuReX|</td>
+                    </tr>
+                    <tr>
+                        <td>2012-06</td>
+                        <td>Bac0n</td>
+                        <td>Slic3`</td>
+                        <td>Sked|</td>
+                    </tr>
+                    <tr>
+                        <td>2009-04</td>
+                        <td>scatman</td>
+                        <td>_d3x0c</td>
+                        <td>psxc</td>
+                    </tr>
+                    <tr>
+                        <td>&nbsp;<td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td>Overal</td>
+                        <td>psxc</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                    </tr>
+                </tbody>
+            </table>
+        <br>
+        <br>
+        <br>
+        <b>*</b> busiest 10 months in #pzs-ng on EFNet from 2008-2022<br>
+        &nbsp; nicks were most active that month by # of lines<br>
+        &nbsp; there's also a few <a href="quotes.html">quotes</a> available from the chan
+        <br>
+        <br>
+    </div>
 </div>
-<br>
-<br>
-
-<div style="flex:1;padding-left:100px;">
-<table class="table" id="ircstats">
-    <caption>irc top 10 months</caption>
-    <tr>
-        <th>date</th>
-        <th>top3 nicks</th>
-    </tr>
-    <tbody>
-        <tr>
-            <td>2014-12</td>
-            <td>p0st crx_ tittof
-        </tr>
-        <tr>
-            <td>2009-05</td>
-            <td>Logicwax cdr KiTTy|
-        </tr>
-        <tr>
-            <td>2014-10</td>
-            <td>d3x0c zeeter tittof
-        </tr>
-        <tr>
-            <td>2009-01</td>
-            <td>infected psxc scotty
-        </tr>
-        <tr>
-            <td>2012-04</td>
-            <td>cxx crx glox
-        </tr>
-        <tr>
-            <td>2009-07</td>
-            <td>_d3x0c fr546yu psxc
-        </tr>
-        <tr>
-            <td>2008-08</td>
-            <td>Sked| [b33r] psxc
-        </tr>
-        <tr>
-            <td>2008-07</td>
-            <td>psxc khaki |DuReX|
-        </tr>
-        <tr>
-            <td>2012-06</td>
-            <td>Bac0n Slic3` Sked|
-        </tr>
-        <tr>
-            <td>2009-04</td>
-            <td>scatman _d3x0c psxc
-        </tr>
-    </tbody>
-</table>
-<br>
-<br>
-<b>*</b> busiest months in #pzs-ng on EFNet from 2008-2022<br>
-&nbsp; top nicks were most active that month (# of lines)<br>
-&nbsp; there's also a few <a href="quotes.html">quotes</a> available from the chan
-<br>
-<br>
-</div>
-</div>
-<td>
 <br>
 <br>
 <div class="chart-container" style="position:relative;height:40vh;width:50vw;padding-top:10px;padding-bottom:25px">
     <canvas id="authorChart"></canvas>
 </div>
-</div>
 <br>
 <br>
+Still not satisfied your stats hunger? Check <a target="_blank" href="gitstats">GitStats</a>.
+<br>
+<br>
+<br>
+
 --------------------------------<br>
 Meet us at <a target="_blank" href="http://www.efnet.org">EFnet</a> channel #pzs-ng<br>
 <script src="js/updated.js"></script>

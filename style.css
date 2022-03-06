@@ -42,19 +42,6 @@ a:link, a:active, a:visited, a:hover {
     margin-left: 30px;
 }
 
-/*
-h1#file_header {
-    font-size: 1em;
-    margin-bottom: 0px;
-}
-*/
-
-/*
-iframe#google_ads_frame1 {
-    height: 17px;
-}
-*/
-
 .quotes {
     display: inline-block;
     width: 850px;
@@ -129,6 +116,10 @@ tr:nth-child(even) {
     width: 60pt;
 }
 
+#dataTableYear td:nth-child(2) {
+    text-align: left;
+}
+
 #gitfame th {
     width: 75pt;
 }
@@ -142,20 +133,12 @@ tr:nth-child(even) {
     width: 30pt;
 }
 
-#ircstats td {
-    text-align: left;
-}
-
 #ircstats th:nth-child(1) {
-    width: 80pt;
+    width: 85pt;
 }
 
-#ircstats th:nth-child(2) {
-    width: 130pt;
-}
-
-#dataTableYear td:nth-child(2) {
-    text-align: left;
+#ircstats td {
+    width: 70pt;
 }
 
 caption {
@@ -165,3 +148,17 @@ caption {
 canvas {
     border: 1px solid #626262;
 }
+
+
+/*
+h1#file_header {
+    font-size: 1em;
+    margin-bottom: 0px;
+}
+*/
+
+/*
+iframe#google_ads_frame1 {
+    height: 17px;
+}
+*/

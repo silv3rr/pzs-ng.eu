@@ -1,5 +1,5 @@
 /*
- * ChartJS: create actual chart from table data
+ * Create actual chart from table data using ChartJS
  */
 function BuildChart(chartName, chartTitle, labelTitle, data, horizontal) {
     Chart.defaults.set('plugins.datalabels', {
@@ -62,7 +62,7 @@ function BuildChart(chartName, chartTitle, labelTitle, data, horizontal) {
 Chart.register(ChartDataLabels);
 
 /*
-* Get values from HTML table to create charts with buildChart
+* Get values from HTML table as JSON
 */
 function tableJson(tableName) {
     var table = document.getElementById(tableName);
