@@ -4,6 +4,7 @@ _site
 .jekyll-metadata
 vendor
 
+*.bak
 *.swp
 
 quotes.html
