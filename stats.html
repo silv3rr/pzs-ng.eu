@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <script src="js/piwik.js"></script>
-    <script src="js/chart.min.js"></script>
-    <script src="js/chartjs-plugin-datalabels.min.js"></script>
-    <script src="js/htmlchart.js"></script>
+    <script type="text/javascript" src="js/piwik.js"></script>
+    <script type="text/javascript" src="js/chart.min.js"></script>
+    <script type="text/javascript" src="js/chartjs-plugin-datalabels.min.js"></script>
+    <script type="text/javascript" src="js/htmlchart.js"></script>
     <link rel="stylesheet" type="text/css" href="style.css">
     <title>pzs-ng: Project Zipscript Next Generation - stats</title>
 </head>
 <body>
-Welcome to pzs-ng (Project Zipscript - Next Generation) <b>stats</b><br>
-<div class="margin3">main page: <a href="index.html">index.html</a> | <a href="quotes.html">quotes.html</a> | <a href="stats.html">stats.html</a> | <a href="disclaimer.html">disclaimer.html</a></div><br>
+Welcome to pzs-ng (Project Zipscript - Next Generation) <strong>stats</strong><br>
+<div class="margin3">main page: <a href="index.html">index.html</a> | <a href="quotes.html">quotes.html</a> | <a href="stats.html">stats.html</a> | <a href="themes.html">themes.html</a> | <a href="disclaimer.html">disclaimer.html</a></div><br>
 <br>
-<b>STATISTICS:</b><br>
+<strong>STATISTICS:</strong><br>
 -----------<br>
 <br>
 <div style="display:flex;">
@@ -161,7 +161,7 @@ Welcome to pzs-ng (Project Zipscript - Next Generation) <b>stats</b><br>
         </table>
         <br>
         <br>
-        <b>*</b> included are authors with 3+ commits<br>
+        <strong>*</strong> included are authors with 3+ commits<br>
         &nbsp; commits of authors with multiple nicks were tallied<br>
     </div>
     <br>
@@ -438,10 +438,10 @@ Welcome to pzs-ng (Project Zipscript - Next Generation) <b>stats</b><br>
             </tbody>
         </table>
         <p>
-            Total commits: <b>2414</b><br>
-            Total ctimes: <b>16414</b><br>
-            Total files: <b>584</b><br>
-            Total loc: <b>58352</b>
+            Total commits: <strong>2414</strong><br>
+            Total ctimes: <strong>16414</strong><br>
+            Total files: <strong>584</strong><br>
+            Total loc: <strong>58352</strong>
         </p>
     </div>
     <br>
@@ -537,7 +537,7 @@ Welcome to pzs-ng (Project Zipscript - Next Generation) <b>stats</b><br>
         <br>
         <br>
         <br>
-        <b>*</b> busiest 10 months in #pzs-ng on EFNet from 2008-2022<br>
+        <strong>*</strong> busiest 10 months in #pzs-ng on EFNet from 2008-2022<br>
         &nbsp; nicks were most active that month by # of lines<br>
         &nbsp; there's also a few <a href="quotes.html">quotes</a> available from the chan
         <br>
@@ -558,47 +558,12 @@ Still not satisfied your stats hunger? Check <a target="_blank" href="gitstats">
 
 --------------------------------<br>
 Meet us at <a target="_blank" href="http://www.efnet.org">EFnet</a> channel #pzs-ng<br>
-<script src="js/updated.js"></script>
+<script type="text/javascript" src="js/updated.js"></script>
 Last updated <div id="lastUpdated" style="display:inline"></div><br>
 Greetings wof, your op is my command ;)
 <!-- Matomo Image Tracker--><noscript>
     <img src="https://stats.pzs-ng.eu/piwik/piwik.php?idsite=18&rec=1" style="border:0" alt="" />
 </noscript><!-- End Matomo -->
-<script>
-    /* 
-     * Parse table data
-     */
-    var chartName, chartTitle, labelTitle
-    var filter = []
-    var data = []
-    var labels = []
-
-    // dataTableAuthor
-    chartName = 'authorChart'
-    chartTitle = 'authors avg # of commits per year'
-    labelTitle = 'commits per year'
-    json = tableJson('dataTableAuthor')
-    var idx = 0
-    filter = json.filter(e => e.commits > 10) // need at least 10 commits
-    filter.forEach(e => {
-        labels.push([Object.values(e)[0], `(${String(e.to-e.from)}y)`])
-    });
-    for (let i = 0; i < filter.length; i++) {
-        data[i] = Math.round(filter[i].commits/(filter[i].to-filter[i].from))
-    };
-    BuildChart(chartName, chartTitle, labelTitle, data, false);
-
-    // dataTableYear
-    /*
-    chartName = 'yearChart'
-    chartTitle =  'total commits per year'
-    labelTitle = 'commits'
-    data, labels = []
-    json = tableJson('dataTableYear')
-    labels = json.map(e => Object.values(e)[0])
-    data = json.map(e => e.total_commits)
-    BuildChart(chartName, chartTitle, labelTitle, data, true);
-    */
-</script>
+<script type="text/javascript">parseTableData();</script>
 </body>
 </html>
