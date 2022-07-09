@@ -2,19 +2,6 @@
 // http://hawkee.com/snippet/10164/
 //------------------------------------------------------
 
-var themesObj = {
-    "default": {
-        "url": "https://raw.githubusercontent.com/glftpd/pzs-ng/master/sitebot/themes/",
-        "names": [ "default", "classic", "d3x0c", "dakrer", "liquid", "nfs", "psxc", "vampire", "wshadow" ],
-    },
-    "custom": {
-        "slv": {
-            "url": "https://raw.githubusercontent.com/silv3rr/sscripts.ga/master/",
-            "names": [ "abuse", "fear", "og", "pussy" ],
-        }
-    }
-}
-  
 function xhrSuccess() {
     this.callback.apply(this, this.arguments);
 }
@@ -50,6 +37,7 @@ function ircToHtml(textFile, callback) {
         let ngBotUnitMatch
         let colRe
         let codeArr = []
+
         let ngBotRe = /(%c\d{1,2}|%[builr]){[^\}]+\}/
         let ircRe = /(\003(\d{1,2})[,]?(\d{1,2})?|\0{2})[^\0{2}]+(\0{2})?/
 
@@ -76,8 +64,8 @@ function ircToHtml(textFile, callback) {
             ]
             colRe = /%c(\d{1,2})[,]?(\d{1,2})?\{([^\}]+)(\})/;
             // ngbot: get default colors
-            let ngBotColRe = /COLOR(\d)\s*=\s*"(\d{2})"/g;
-            while (ngBotUnitMatch = ngBotColRe.exec(text)) {
+            let ngBotColorRe = /COLOR(\d)\s*=\s*"(\d{2})"/g;
+            while (ngBotUnitMatch = ngBotColorRe.exec(text)) {
                 let i = (ngBotUnitMatch[0]) ? ngBotUnitMatch[1] : '00';
                 ngBotColArr[i] = ngBotUnitMatch[2]
             }
@@ -123,14 +111,14 @@ function ircToHtml(textFile, callback) {
 }
 
 function ngBotReplace(text) {
+    const allSections = ["APPS", "UTILS", "DIVX", "GAMES", "TVRIPS"];
+    const section = allSections[Math.floor(Math.random() * allSections.length)];
     text = text.replace(/^(#.*\r?\n)*# BEGIN --->\r?\n/gm, '')
     text = text.replace(/^announce\..*%splitter.*\r?\n/gm, '')
     text = text.replace(/%sitename/g, 'MYSITE')
-    text = text.replace(/%section/g, 'GAMES')
+    text = text.replace(/%section/g, section)
     text = text.replace(/%u_ircnick/g, 'somenick')
-    text = text.replace(/%u_hostmask/g, 'some.hostmask')
     text = text.replace(/%u_siteop/g, 'SomeOp')
-    text = text.replace(/%nuker/g, 'meanman')
     text = text.replace(/%u_racer_monthup/g, '3')
     text = text.replace(/%u_racer_allup/g, '10')
     text = text.replace(/%u_tagline/g, 'Some Tagline')
@@ -140,8 +128,11 @@ function ngBotReplace(text) {
     text = text.replace(/%genre/g, 'Pop')
     text = text.replace(/%year/g, '1999')
     text = text.replace(/%reason/g, 'Just because')
-    text = text.replace(/%msg/g, 'This is a message')
-    text = text.replace(/%(releasename|reldir|relname|release)/g, 'Some_Release-Group')
+    text = text.replace(/%cmdprehelp/g, '!nghelp')
+    text = text.replace(/%desc/g, 'EURO')
+    text = text.replace(/%pid/g, '1')
+    text = text.replace(/%msg/g, 'Yes, this is a message')
+    text = text.replace(/%(releasename|reldir|relname|release)/g, 'Some_Release-GROUP')
     text = text.replace(/%(f_name|filename)/g, 'somefilename.rar')
     text = text.replace(/%(u_name|u_racer_name)/g, 'someuser')
     text = text.replace(/%(g_name|g_racer_name)/g, 'iND')
@@ -150,72 +141,81 @@ function ngBotReplace(text) {
     text = text.replace(/%(u_leader_gname|g_racer_name|g_leader_name)/g, 'LameGroup')
     text = text.replace(/%(pregroup)/g, 'CoolGroup')
     text = text.replace(/%(u_racer_position|g_racer_position|u_racer_wkup|num)/g, '1')
+    text = text.replace(/%(u_hostmask|u_host)/g, 'shell.example.com')
+    text = text.replace(/%(nuker|unnuker)/g, 'meanman')
     text = text.replace(
-        /%(t_avgspeed|u_speed|u_racer_avgspeed|g_racer_avgspeed|u_leader_avgspeed|r_avgspeed|upspeed|dnspeed|speed)/g,
+        /%(t_percent|u_racer_percent|g_racer_percent|u_leader_percent|g_leader_percent|uploaded_percent|perc_free|perc_used|uppercent|dnpercent|totalpercent|percent|fper|per)/g,
+        Math.floor(Math.random() * 100 + 0)
+    )
+    text = text.replace(
+        /%(t_avgspeed|u_speed|u_racer_avgspeed|g_racer_avgspeed|u_leader_avgspeed|r_avgspeed|upspeed|dnspeed|totalspeed|speed)/g,
         Math.floor(Math.random() * 999 + 100) + 'MB/s'
     )
     text = text.replace(
-        /%(t_mbytes|u_racer_mbytes|g_racer_mbytes|u_leader_mbytes|uploaded_mbytes|mbytes|mbytesps|mibytes|mbps|free|total|used|size)/g,
+        /%(t_mbytes|u_racer_mbytes|g_racer_mbytes|u_leader_mbytes|g_leader_mbytes|uploaded_mbytes|mbytes|mbytesps|mibytes|mbps)/g,
         Math.floor(Math.random() * 100 + 1000)
+    )
+    text = text.replace(
+        /%(free|total|used|size)/g,
+        Math.floor(Math.random() * 100 + 1000) + 'MB'
     )
     text = text.replace(
         /%(t_timeleft|t_duration|idletime)/g,
         Math.floor(Math.random() * 999 + 100) + 's'
     )
     text = text.replace(
-        /%(uploads|downloads|count|ping|response|port)/g,
-        Math.floor(Math.random() * 999 + 100)
+        /%port/g,
+        Math.floor(Math.random() * 1024 + 65535)
+    )
+    text = text.replace(
+        /%(count|ping|response|totallogins|maxusers)/g,
+        Math.floor(Math.random() * 5 + 60)
     )
     text = text.replace(
         /%(t_files|t_filecount|u_racer_files|g_racer_files|u_leader_files|g_leader_files|files)/g,
         Math.floor(Math.random() * 250 + 50)
     )
     text = text.replace(
-        /%(t_percent|u_racer_percent|g_racer_percent|u_leader_percent|g_leader_percent|uploaded_percent|perc_free|perc_used|uppercent|dnpercent|percent|fper)/g,
-        Math.floor(Math.random() * 100 + 0)
-    )
-    text = text.replace(
-        /%(u_count|g_count|u_idletimes|multiplier|cds|nukees)/g,
+        /%(u_count|g_count|u_idletime|multiplier|cds|nukees|uploads|downloads|transfers|active)/g,
         Math.floor(Math.random() * 10 + 1)
     )
     // text = text.replace(/%/g,'')
     return text
 }
 
-// TODO: - refactor if custom showSample
-
-function createLinks() {
-    let addButtons = (url, names, creator, custom) => {
+function createLinks(themesObj) {
+    let addButtons = (url, names, creator, custom, sample) => {
         Object.values(names).forEach(name => {
             document.write(`<input class=\"lnkbutton\" type=\"submit\" value=\"${name}${custom ? ' *' : ''}\"
-                            onclick=\"return showTheme('${url}', '${name}', '${creator}', ${custom});\"/>`)
+                            onclick=\"return showTheme('${url}', '${name}', '${creator}', ${custom}, ${sample});\"/>`)
         })
     }
     Object.keys(themesObj.custom).forEach(key => {
-        addButtons(themesObj.custom[key].url, themesObj.custom[key].names, key, true)
+        addButtons(themesObj.custom[key].url, themesObj.custom[key].names, key, true, themesObj.custom[key].sample)
     })
-    addButtons(themesObj.default.url, themesObj.default.names, null, false)
+    addButtons(themesObj.default.url, themesObj.default.names, null, false, false)
 }
 
 function toggleMode() {
-    document.getElementById('sample').classList.toggle('toggleMode')
-    document.getElementById('preview').classList.toggle('toggleMode')
+    document.getElementById('sampletxt').classList.toggle('togglemode')
+    document.getElementById('previewtxt').classList.toggle('togglemode')
 }
 
-function showTheme(url, basename, creator, custom) {
+function showTheme(url, basename, creator, custom, sample) {
     document.getElementById('toggle').style.display = 'block';
-    if (custom && creator) {
-        ircToHtml(`${url}${basename}.log`, function(text) {
-            document.getElementById('sampleHdr').style.display = 'block';
-            document.getElementById('sample').style.display = 'block';
-            document.getElementById('sample').innerHTML = `<pre>${text}</pre>`;
-        });
+    // try getting sample theme.log for theme.zst
+    if (custom && creator && sample) {
+        try {
+            ircToHtml(`${url}${basename}.log`, function(text) {
+                document.getElementById('sample').style.display = 'block';
+                document.getElementById('sampletxt').innerHTML = `<pre>${text}</pre>`;
+            });
+        } catch (e) { }
     } else {
-        document.getElementById('sampleHdr').style.display = 'none';
         document.getElementById('sample').style.display = 'none';
     }
     ircToHtml(`${url}${basename}.zst`, function(text) {
-        document.getElementById('preview').innerHTML = `<pre>${text}</pre>`;
+        document.getElementById('previewtxt').innerHTML = `<pre>${text}</pre>`;
         document.getElementById('title').style.display = 'block';
         document.getElementById('title').innerHTML = `<p>Download: <a href="${url}${basename}.zst">${basename}.zst</a> (${custom ? '* custom' : "bundled"})`;
     });

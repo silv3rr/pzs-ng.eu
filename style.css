@@ -143,7 +143,7 @@ tr:nth-child(even) {
     width: 70pt;
 }
 
-caption, .sampleHdr, .previewHdr {
+caption {
     color: white;
     background-color: #626262;
 }
@@ -211,19 +211,28 @@ iframe#google_ads_frame1 {
 .fg14{color:#7f7f7f;}
 .fg15{color:#d2d2d2;}
 
-.hidden {
-    display:none;
-}
 
 .placeholder {
-    color:gray;
+    color: gray;
 }
 
-.preview, .sample {
-    border:solid 2px #444;
+.sample, .preview {
     display:block;
-    padding:0.5%;
+    width: 80%;
+}
+
+.samplehdr, .previewhdr {
+    display:block;
+    color: white;
+    background-color: #626262;
+    border-bottom: solid 0px #444;
+}
+
+.previewtxt, .sampletxt {
+    border: solid 2px #444;
+    padding: 0.5%;
     margin-bottom: 20px;
+    overflow: auto;
 }
 
 .lnkbutton {
@@ -241,7 +250,7 @@ iframe#google_ads_frame1 {
     margin-right: 8px;
 }
 
-.toggleMode {
+.togglemode {
     background-color: #cfcfcf;
     color: black;
 }

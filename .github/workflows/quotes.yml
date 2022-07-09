@@ -30,4 +30,4 @@ jobs:
       - name: template-mirror-mini
         run: |
           git diff --name-only --diff-filter=ACMRT HEAD^ -- quotes && \
-          ./scripts/template-mirror/tmm.pl
+            ./scripts/template-mirror/tmm.pl
