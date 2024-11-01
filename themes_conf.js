@@ -8,7 +8,7 @@ const themesObj = {
     },
     "custom": {
         "slv": {
-            "url": "https://raw.githubusercontent.com/silv3rr/scripts/sitebot/themes/",
+            "url": "https://raw.githubusercontent.com/silv3rr/scripts/master/sitebot/themes/",
             "names": [ "abuse", "fear", "og", "pussy", "one" ],
             "sample": true,
         }
