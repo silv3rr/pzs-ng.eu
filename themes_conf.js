@@ -8,8 +8,8 @@ const themesObj = {
     },
     "custom": {
         "slv": {
-            "url": "https://raw.githubusercontent.com/silv3rr/sscripts.ga/master/",
-            "names": [ "abuse", "fear", "og", "pussy" ],
+            "url": "https://raw.githubusercontent.com/silv3rr/scripts/sitebot/themes/",
+            "names": [ "abuse", "fear", "og", "pussy", "one" ],
             "sample": true,
         }
         // ...add another creator here
