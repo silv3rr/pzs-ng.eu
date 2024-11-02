@@ -22,6 +22,7 @@ function loadFile(url, callback) {
     xhr.send(null);
 }
 
+
 function ngBotReplace(text) {
     const allSections = ["APPS", "UTILS", "DIVX", "GAMES", "TVRIPS"];
     let section;
@@ -121,6 +122,7 @@ function ircToHtml(textFile, callback) {
         if (ircRE.test(text)) {
             // irc: bold, italics, underline and color
             controlCodes = new Array(
+                // [SEARCH],              [REPLACE(HTML)]]
                 [/\002([^\002]+)(\002)?/, ["<span class=\"bold\">", "</span>"]],
                 [/\037([^\037]+)(\037)?/, ["<span class=\"uline\">", "</span>"]],
                 [/\035([^\035]+)(\035)?/, ["<span class=\"italic\">", "</span>"]],
@@ -170,16 +172,16 @@ function ircToHtml(textFile, callback) {
             let html = controlCodes[i][1];
             if (codeRE.test(text)) {
                 let j = 0;
-                let matchText;
-                while ((matchText = codeRE.exec(text)) && j < 999) {  //NOSONAR
+                let textMatch;
+                while ((textMatch = codeRE.exec(text)) && j < 999) {  //NOSONAR
                     if (j > 999) {
                         console.debug(`DEBUG: break j=${j}`)
                         break
                     }
                     if (html.length === 3) {
-                        text = text.replace(matchText[0], html[0] + matchText[1] + html[1] + matchText[2] + html[2]);
+                        text = text.replace(textMatch[0], html[0] + textMatch[1] + html[1] + textMatch[2] + html[2]);
                     } else {
-                        text = text.replace(matchText[0], html[0] + matchText[1] + html[1]);
+                        text = text.replace(textMatch[0], html[0] + textMatch[1] + html[1]);
                     }
                     j++;
                 }
