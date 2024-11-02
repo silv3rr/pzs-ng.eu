@@ -7,6 +7,7 @@
   <script type="text/javascript" src="themes_conf.js"></script>
   <script type="text/javascript" src="js/piwik.js"></script>
   <script type="text/javascript" src="js/irctohtml.js"></script>
+  <script type="text/javascript" src="js/themes.js"></script>
 </head>
 <body>
 Welcome to pzs-ng (Project Zipscript - Next Generation) <strong>themes</strong><br>
@@ -15,28 +16,32 @@ Welcome to pzs-ng (Project Zipscript - Next Generation) <strong>themes</strong><
 <strong>SITEBOT THEMES:</strong><br>
 ---------------<br>
 <br>
-<div>
+<form id="form">
+  <div>
   Click on one of the links below to view and download ngBot themes. See <a href="https://github.com/pzs-ng/pzs-ng/blob/1605bb6bbdb1d254f244540798ceecc1561f66f8/sitebot/README#L103" target="_blank">here</a> for installation instructions.<br>
   To submit your own themes and share it publicly <a href="https://github.com/glftpd/pzs-ng/issues/new?title=New+sitebot+theme" target="_blank">create a new issue</a>.
-  <form id="form">
     <p>Available themes:
       <script type="text/javascript">createLinks(themesObj);</script>
     </p>
-    <span id="toggle" style="display:none">
-      Toggle mode:
-      <input class="lnkbutton" type="submit" value="light/dark" onclick="toggleMode();">
-    </span>
-  </form>
-</div>
-<br>
+  </div>
+<p>&nbsp;</p>
 <span id="title" class="title" style="display:none"></span>
+<span id="toggle" style="display:none">
+  Toggle mode:
+  <label for="toggleInput">
+    <input class="toggleButton" id="toggleInput" type="checkbox" onclick="toggleMode();"/>
+    <span class="toggleButtonTxt toggleButtonTxt"></span>
+  </label>
+</span>
+<p></p>
+</form>
 <div id="sample" class="sample" style="display:none">
-  <span id="samplehdr" class="samplehdr">&nbsp;Sample</span>
-  <div id="sampletxt" class="sampletxt"></div>
+  <span id="sampleHdr" class="sampleHdr">&nbsp;Sample</span>
+  <div id="sampleTxt" class="sampleTxt"></div>
 </div>
 <div id="preview" class="preview">
-  <span id="previewhdr" class="previewhdr">&nbsp;Preview</span>
-  <div id="previewtxt" class="previewtxt">
+  <span id="previewHdr" class="previewHdr">&nbsp;Preview</span>
+  <div id="previewTxt" class="previewTxt">
     <span class="placeholder">Selected theme will be shown here...</span>
   </div>
 </div>

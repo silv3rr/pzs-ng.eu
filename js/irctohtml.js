@@ -21,100 +21,6 @@ function loadFile(url, callback) {
     // xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded; charset=ISO-8859-1')
     xhr.send(null);
 }
-    
-function ircToHtml(textFile, callback) {
-    if (textFile === null) {
-        return false;
-    }
-    const form = document.getElementById('form');
-    form.addEventListener('submit', (event) => {
-        event.preventDefault();
-    });
-    loadFile(textFile, function() {
-        var text = this.responseText;
-        var ngBotTheme = false;
-        let ngBotColArr = [];
-        let ngBotUnitMatch;
-        let colRe;
-        let codeArr = [];
-
-        let ngBotRe = /(%c\d{1,2}|%[builr]){[^\}]+\}/
-        let ircRe = /(\003(\d{1,2})[,]?(\d{1,2})?|\0{2})[^\0{2}]+(\0{2})?/
-
-        // replace irc control codes: bold, italics, underline and color
-        if (ircRe.test(text)) {
-            codeArr = new Array(
-                [/\002([^\002]+)(\002)?/, ["<span class=\"bold\">", "</span>"]],
-                [/\037([^\037]+)(\037)?/, ["<span class=\"uline\">", "</span>"]],
-                [/\035([^\035]+)(\035)?/, ["<span class=\"italic\">", "</span>"]],
-            );
-            colRe = /\003(\d{1,2})[,]?(\d{1,2})?([^\003]+)(\003)/
-        // replace ngbot control codes: bold, italics, underline, pad, case and color
-        } else if (ngBotRe.test(text)) {
-            ngBotTheme = true
-            codeArr = new Array(
-                [/%b\{([^\}]+)(\})/, ["<span class=\"bold\">", "</span>"]],
-                [/%i\{([^\}]+)(\})/, ["<span class=\"italic\">", "</span>"]],
-                [/%u\{([^\}]+)(\})/, ["<span class=\"uline\">", "</span>"]],
-                [/%l(\d+)\{([^\}]+)(\})/, [`<span class=\"aleft;\" style=\"padding-right:`, "px\">", "</span>"]],
-                [/%r(\d+)\{([^\}]+)(\})/, [`<span class=\"aright;\" style=\"padding-left:`, "px\">", "</span>"]],
-                [/%m\d\{([^\}]+)(\})/,    ["<span class=\"acenter;\">", "</span>"]],
-                [/%T\{([^\}]+)(\})/,  ["<span class=\"tcase;\">", "</span>"]],
-                [/%U\{([^\}]+)(\})/,  ["<span class=\"ucase;\">", "</span>"]],
-                [/%L\{([^\}]+)(\})/,  ["<span class=\"lcase;\">", "</span>"]],
-            );
-            colRe = /%c(\d{1,2})[,]?(\d{1,2})?\{([^\}]+)(\})/;
-            // get default ngbot theme colors
-            let ngBotColorRe = /COLOR(\d)\s*=\s*"(\d{1,2})"/g;
-            while (ngBotUnitMatch = ngBotColorRe.exec(text)) {
-                let i = (ngBotUnitMatch[0]) ? ngBotUnitMatch[1] : '00';
-                ngBotColArr[i] = ngBotUnitMatch[2];
-            }
-        } else {
-            return false;
-        }
-        // replace colors
-        let colMatch
-        let c = 0
-        while (colMatch = colRe.exec(text)) {
-            if (c > 999) {
-                console.debug(`DEBUG: break c=${c}`);
-                break;
-            }
-            let colFg = (ngBotColArr[colMatch[1]]) ? ngBotColArr[colMatch[1]] : colMatch[1]
-            let colBg = (colMatch[2]) ? ` bg${colMatch[2]}` : ""
-            text = text.replace(
-                colMatch[0], `<span class="fg${colFg.replace(/^0+/,'')}${colBg}">${colMatch[3]}</span>`
-            );
-        }
-        // control codes
-        for (let i=0; i < codeArr.length; i++) {  //NOSONAR
-            let codeRe = codeArr[i][0];
-            let html = codeArr[i][1];
-            if (codeRe.test(text)) {
-                let j = 0;
-                let matchText;
-                while ((matchText = codeRe.exec(text)) && j < 999) {  //NOSONAR
-                    if (j > 999) {
-                        console.debug(`DEBUG: break j=${j}`)
-                        break
-                    }
-                    if (html.length === 3) {
-                        text = text.replace(matchText[0], html[0] + matchText[1] + html[1] + matchText[2] + html[2]);
-                    } else {
-                        text = text.replace(matchText[0], html[0] + matchText[1] + html[1]);
-                    }
-                    j++;
-                }
-            }
-        }
-        // replace vars in ngBot input text with example values
-        if (ngBotTheme) {
-            text = ngBotReplace(text)
-        }
-        return callback(text);
-    });
-}
 
 function ngBotReplace(text) {
     const allSections = ["APPS", "UTILS", "DIVX", "GAMES", "TVRIPS"];
@@ -199,10 +105,91 @@ function ircToHtml(textFile, callback) {
     if (textFile === null) {
         return false;
     }
-    ircToHtml(`${url}${basename}.zst`, function(text) {
-        document.getElementById('previewtxt').innerHTML = `<pre>${text}</pre>`;
-        document.getElementById('title').style.display = 'block';
-        document.getElementById('title').innerHTML = `<p>Download: <a href="${url}${basename}.zst">${basename}.zst</a> (${custom ? '* custom' : "bundled"})`;
+    const form = document.getElementById('form');
+    form.addEventListener('submit', (event) => {
+        event.preventDefault();
+    });
+    loadFile(textFile, function() {
+        var text = this.responseText;
+        var ngBotTheme = false;
+        let ngBotColors = [];
+        let ngBotUnitMatch;
+        let colorRE;
+        let controlCodes = [];
+        let ircRE = /(\003(\d{1,2})[,]?(\d{1,2})?|\0{2})[^\0{2}]+(\0{2})?/
+        let ngBotRE = /(%c\d{1,2}|%[builr]){[^\}]+\}/
+        if (ircRE.test(text)) {
+            // irc: bold, italics, underline and color
+            controlCodes = new Array(
+                [/\002([^\002]+)(\002)?/, ["<span class=\"bold\">", "</span>"]],
+                [/\037([^\037]+)(\037)?/, ["<span class=\"uline\">", "</span>"]],
+                [/\035([^\035]+)(\035)?/, ["<span class=\"italic\">", "</span>"]],
+            );
+            colorRE = /\003(\d{1,2})[,]?(\d{1,2})?([^\003]+)(\003)/
+        } else if (ngBotRE.test(text)) {
+            // ngbot: bold, italics, underline, pad, case and color
+            ngBotTheme = true
+            controlCodes = new Array(
+                [/%b\{([^\}]+)(\})/, ["<span class=\"bold\">", "</span>"]],
+                [/%i\{([^\}]+)(\})/, ["<span class=\"italic\">", "</span>"]],
+                [/%u\{([^\}]+)(\})/, ["<span class=\"uline\">", "</span>"]],
+                [/%l(\d+)\{([^\}]+)(\})/, [`<span class=\"aleft;\" style=\"padding-right:`, "px\">", "</span>"]],
+                [/%r(\d+)\{([^\}]+)(\})/, [`<span class=\"aright;\" style=\"padding-left:`, "px\">", "</span>"]],
+                [/%m\d\{([^\}]+)(\})/,    ["<span class=\"acenter;\">", "</span>"]],
+                [/%T\{([^\}]+)(\})/,  ["<span class=\"tcase;\">", "</span>"]],
+                [/%U\{([^\}]+)(\})/,  ["<span class=\"ucase;\">", "</span>"]],
+                [/%L\{([^\}]+)(\})/,  ["<span class=\"lcase;\">", "</span>"]],
+            );
+            colorRE = /%c(\d{1,2})[,]?(\d{1,2})?\{([^\}]+)(\})/;
+            // get default ngbot theme colors
+            let ngBotColorRE = /COLOR(\d)\s*=\s*"(\d{1,2})"/g;
+            while (ngBotUnitMatch = ngBotColorRE.exec(text)) {
+                let i = (ngBotUnitMatch[0]) ? ngBotUnitMatch[1] : '00';
+                ngBotColors[i] = ngBotUnitMatch[2];
+            }
+        } else {
+            return false;
+        }
+        // replace colors
+        let colorMatch
+        let c = 0
+        while (colorMatch = colorRE.exec(text)) {
+            if (c > 999) {
+                console.debug(`DEBUG: break c=${c}`);
+                break;
+            }
+            let colFg = (ngBotColors[colorMatch[1]]) ? ngBotColors[colorMatch[1]] : colorMatch[1]
+            let colBg = (colorMatch[2]) ? ` bg${colorMatch[2]}` : ""
+            text = text.replace(
+                colorMatch[0], `<span class="fg${colFg.replace(/^0+/,'')}${colBg}">${colorMatch[3]}</span>`
+            );
+        }
+        // replace control codes
+        for (let i=0; i < controlCodes.length; i++) {  //NOSONAR
+            let codeRE = controlCodes[i][0];
+            let html = controlCodes[i][1];
+            if (codeRE.test(text)) {
+                let j = 0;
+                let matchText;
+                while ((matchText = codeRE.exec(text)) && j < 999) {  //NOSONAR
+                    if (j > 999) {
+                        console.debug(`DEBUG: break j=${j}`)
+                        break
+                    }
+                    if (html.length === 3) {
+                        text = text.replace(matchText[0], html[0] + matchText[1] + html[1] + matchText[2] + html[2]);
+                    } else {
+                        text = text.replace(matchText[0], html[0] + matchText[1] + html[1]);
+                    }
+                    j++;
+                }
+            }
+        }
+        // replace vars in ngBot input text with example values
+        if (ngBotTheme) {
+            text = ngBotReplace(text)
+        }
+        return callback(text);
     });
 }
 
