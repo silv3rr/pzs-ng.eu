@@ -1,13 +1,15 @@
 function createLinks(themesObj) {
-    let addButtons = (url, names, creator, custom, sample) => {
+    let addButtons = (url, creator, names, sample) => {
         Object.values(names).forEach(name => {
-            document.write(`<input class=\"lnkButton\" type=\"submit\" value=\"${name}\"
-                            onclick=\"return showTheme('${url}', '${name}', '${creator}', ${sample});\"/>`);
+            document.write(
+                `<input class=\"lnkButton\" type=\"submit\" value=\"${name}\"` +
+                `onclick=\"return showTheme('${url}', '${creator}', '${name}', ${sample});\"/>`
+            );
         });
     }
     Object.keys(themesObj).forEach(key => {
         document.write(`<p>&nbsp;&nbsp; o ${key} `);
-        addButtons(themesObj[key].url, themesObj[key].names, key, true, themesObj[key].sample);
+        addButtons(themesObj[key].url, key, themesObj[key].names, themesObj[key].sample);
         document.write('</p>');
     })
 }
@@ -17,7 +19,7 @@ function toggleMode() {
     document.getElementById('previewTxt').classList.toggle('toggleMode')
 }
 
-function showTheme(url, basename, creator, sample) {
+function showTheme(url, creator, basename, sample) {
     document.getElementById('toggle').style.display = 'block';
     // try getting sample theme.log for theme.zst
     if (sample) {
