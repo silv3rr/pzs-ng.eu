@@ -1,7 +1,7 @@
 @charset "utf-8";
 
 body {
-    font-family: Courier New;
+    font-family: "Courier New";
     font-size: 13px;
     color: #BBBBBB;
     background-color: #000000;
@@ -165,90 +165,6 @@ iframe#google_ads_frame1 {
 }
 */
 
-/* irc control codes, from: https://github.com/ircart/irc2html */
-
-.bold{font-weight:bold;}
-.italic{font-style:italic;}
-.uline{text-decoration:underline;}
-.aleft{text-align:left;}
-.acenter{text-align:center;}
-.aright{text-align:right;}
-.tcase{text-transform:capitalize;}
-.ucase{text-transform:uppercase;}
-.lcase{text-transform:lowercase;}
-
-.bg0{background-color:#ffffff;}
-.bg1{background-color:#000000;}
-.bg2{background-color:#00007f;}
-.bg3{background-color:#009300;}
-.bg4{background-color:#ff0000;}
-.bg5{background-color:#7f0000;}
-.bg6{background-color:#9c009c;}
-.bg7{background-color:#fc7f00;}
-.bg8{background-color:#ffff00;}
-.bg9{background-color:#00fc00;}
-.bg10{background-color:#009393;}
-.bg11{background-color:#00ffff;}
-.bg12{background-color:#0000fc;}
-.bg13{background-color:#ff00ff;}
-.bg14{background-color:#7f7f7f;}
-.bg15{background-color:#d2d2d2;}
-
-.fg0{color:#ffffff;}
-.fg1{color:#000000;}
-.fg2{color:#00007f;}
-.fg3{color:#009300;}
-.fg4{color:#ff0000;}
-.fg5{color:#7f0000;}
-.fg6{color:#9c009c;}
-.fg7{color:#fc7f00;}
-.fg8{color:#ffff00;}
-.fg9{color:#00fc00;}
-.fg10{color:#009393;}
-.fg11{color:#00ffff;}
-.fg12{color:#0000fc;}
-.fg13{color:#ff00ff;}
-.fg14{color:#7f7f7f;}
-.fg15{color:#d2d2d2;}
-
-/* alternative colors: looks worse 
-
-.bg0 { background-color: white; }
-.bg1 { background-color: black; }
-.bg2 { background-color: navy; }
-.bg3 { background-color: green; }
-.bg4 { background-color: red; }
-.bg5 { background-color: brown; }
-.bg6 { background-color: purple; }
-.bg7 { background-color: orange; }
-.bg8 { background-color: yellow; }
-.bg9 { background-color: lime; }
-.bg10 { background-color: teal; }
-.bg11 { background-color: lightcyan; }
-.bg12 { background-color: blue; }
-.bg13 { background-color: pink; }
-.bg14 { background-color: grey; }
-.bg15 { background-color: lightgrey; }
-
-.fg0 { color: white; }
-.fg1 { color: black; }
-.fg2 { color: navy; }
-.fg3 { color: green; }
-.fg4 { color: red; }
-.fg5 { color: brown; }
-.fg6 { color: purple; }
-.fg7 { color: orange; }
-.fg8 { color: yellow; }
-.fg9 { color: lime; }
-.fg10 { color: teal; }
-.fg11 { color: lightcyan; }
-.fg12 { color: blue; }
-.fg13 { color: pink; }
-.fg14 { color: grey; }
-.fg15 { color: lightgrey; }
-*/
-
-
 .placeholder {
     color: gray;
 }
@@ -258,35 +174,68 @@ iframe#google_ads_frame1 {
     width: 80%;
 }
 
-.samplehdr, .previewhdr {
+.sampleHdr, .previewHdr {
     display:block;
     color: white;
     background-color: #626262;
     border-bottom: solid 0px #444;
 }
 
-.previewtxt, .sampletxt {
+.previewTxt, .sampleTxt {
     border: solid 2px #444;
     padding: 0.5%;
     margin-bottom: 20px;
     overflow: auto;
 }
 
-.lnkbutton {
+.lnkButton {
     display: inline;
     border-width: 1px;
     border-spacing: 0px;
     border-color: #3b3b3b;
     border-radius: 3px;
     background-color: #202020ce;
-    font-family: Courier New;
-    color: #00ff009d;
+    font-family: "Courier New";
+    color: white;
     text-decoration: none;
     cursor: pointer;
     margin-right: 8px;
 }
 
-.togglemode {
+.lnkButton:hover {
+    color: #00ff009d;
+}
+
+#toggleInput {
+    display: none;
+}
+
+.toggleMode {
     background-color: #cfcfcf;
     color: black;
+}
+
+.toggleButtonTxt {
+    padding: 2px;
+    padding-left: 3px;
+    padding-right: 3px;
+    background-color: #3b3b3b;
+    color:#00ff009d;
+}
+
+.toggleButtonTxt:hover {
+    cursor: pointer;   
+}
+
+:not(input:checked) + .toggleButtonTxt:before{
+    content: "dark"
+}
+
+input:checked + .toggleButtonTxt:before{
+    content: "light"
+}
+
+input:checked + .toggleButtonTxt{
+    background-color: #3b3b3b;
+    color: #00FFFF;
 }
