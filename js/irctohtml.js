@@ -195,36 +195,9 @@ function ngBotReplace(text) {
     return text;
 }
 
-function createLinks(themesObj) {
-    let addButtons = (url, names, creator, custom, sample) => {
-        Object.values(names).forEach(name => {
-            document.write(`<input class=\"lnkbutton\" type=\"submit\" value=\"${name}${custom ? ' *' : ''}\"
-                            onclick=\"return showTheme('${url}', '${name}', '${creator}', ${custom}, ${sample});\"/>`);
-        });
-    }
-    Object.keys(themesObj.custom).forEach(key => {
-        addButtons(themesObj.custom[key].url, themesObj.custom[key].names, key, true, themesObj.custom[key].sample);
-    })
-    addButtons(themesObj.default.url, themesObj.default.names, null, false, false);
-}
-
-function toggleMode() {
-    document.getElementById('sampletxt').classList.toggle('togglemode')
-    document.getElementById('previewtxt').classList.toggle('togglemode')
-}
-
-function showTheme(url, basename, creator, custom, sample) {
-    document.getElementById('toggle').style.display = 'block';
-    // try getting sample theme.log for theme.zst
-    if (custom && creator && sample) {
-        try {
-            ircToHtml(`${url}${basename}.log`, function(text) {
-                document.getElementById('sample').style.display = 'block';
-                document.getElementById('sampletxt').innerHTML = `<pre>${text}</pre>`;
-            });
-        } catch (e) { }
-    } else {
-        document.getElementById('sample').style.display = 'none';
+function ircToHtml(textFile, callback) {
+    if (textFile === null) {
+        return false;
     }
     ircToHtml(`${url}${basename}.zst`, function(text) {
         document.getElementById('previewtxt').innerHTML = `<pre>${text}</pre>`;
