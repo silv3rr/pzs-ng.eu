@@ -199,9 +199,8 @@ iframe#google_ads_frame1 {
     color: white;
     text-decoration: none;
     cursor: pointer;
-    padding-left: 5px;
-    padding-right: 5px;
     margin-right: 8px;
+    padding: 2px;
 }
 
 .lnkButton:hover {
@@ -220,8 +219,11 @@ iframe#google_ads_frame1 {
 .toggleButtonTxt {
     padding-top: 2px;
     padding-bottom: 2px;
+    padding-left: 5px;
+    padding-right: 5px;
     background-color: #3b3b3b;
-    color:#00ff009d;
+    color: #00ff009d;
+    font-weight: bold;
 }
 
 .toggleButtonTxt:hover {
