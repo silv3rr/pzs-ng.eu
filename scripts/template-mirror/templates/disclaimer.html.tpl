@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <link rel="stylesheet" type="text/css" href="style.css">
+  <link rel="stylesheet" type="text/css" href="css/style.css">
   <title>pzs-ng: Project Zipscript Next Generation - disclaimer</title>
-  <script src="js/piwik.js"></script>
+  <script type="text/javascript" src="js/piwik.js"></script>
 </head>
 <body>
 Welcome to pzs-ng (Project Zipscript - Next Generation) <b>disclaimer</b><br>
-<div class="margin3">main page: <a href="index.html">index.html</a> | <a href="quotes.html">quotes.html</a> | <a href="stats.html">stats.html</a> | <a href="disclaimer.html">disclaimer.html</a></div><br>
+<div class="margin3">main page: <a href="index.html">index.html</a> | <a href="quotes.html">quotes.html</a> | <a href="stats.html">stats.html</a> | <a href="themes.html">themes.html</a> | <a href="disclaimer.html">disclaimer.html</a></div><br>
 <br>
 <b>DISCLAIMER:</b><br>
 -----------<br>
@@ -32,7 +32,7 @@ Meet us at <a target="_blank" href="http://www.efnet.org">EFnet</a> channel #pzs
 Last updated <div id="lastUpdated" style="display:inline"></div><br>
 Greetings wof, your op is my command ;)
 <!-- Matomo Image Tracker--><noscript>
-<img src="https://stats.pzs-ng.eu/piwik.php?idsite=18&rec=1" style="border:0" alt="" />
+<img referrerpolicy="no-referrer-when-downgrade" src="https://stats.pzs-ng.eu/matomo.php?idsite=18&rec=1" style="border:0" alt="" />
 </noscript><!-- End Matomo -->
 </body>
 </html>

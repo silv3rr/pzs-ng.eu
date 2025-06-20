@@ -33,7 +33,7 @@ sub parse_template_line {
     my $qnum = @quotes;
     for (reverse @quotes) {
       my $quote = $_;
-      $quoteString .= 'Quote #<b>' . $qnum-- . "</b><br>\n";
+      $quoteString .= 'Quote #<strong>' . $qnum-- . "</strong><br>\n";
       $quoteString .= "-------------<br>\n";
       $quote = ' &nbsp; ' . $quote;
       $quote =~ s/</&lt;/g; $quote =~ s/>/&gt;/g;
