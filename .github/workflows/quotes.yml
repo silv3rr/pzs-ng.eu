@@ -27,7 +27,9 @@ jobs:
       #    echo "DEBUG: diff filter=$(git diff --name-only --diff-filter=ACMRT HEAD^ -- quotes)"
       #    echo "DEBUG: git diff=$(git diff --name-status HEAD~1 --)"
       #    echo "DEBUG: git log=$(git  --no-pager log --pretty=oneline -10)"
+      #- name: template-mirror-mini
+      #  run: |
+      #    git diff --name-only -- quotes | grep -Eq "^quotes$" && \
+      #      ./scripts/template-mirror/tmm.pl
       - name: template-mirror-mini
-        run: |
-          git diff --name-only -- quotes | grep -Eq "^quotes$" && \
-            ./scripts/template-mirror/tmm.pl
+        run: ./scripts/template-mirror/tmm.pl
